@@ -1,0 +1,29 @@
+/* ./assets/css/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  margin: auto;
+}
+
+.btn {
+  @apply font-semibold py-2 px-4 text-blue-500 rounded;
+}
+.btn-rounded {
+  @apply rounded-full;
+}
+.btn-outlined {
+  @apply bg-transparent border;
+}
+.btn-disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.btn-primary {
+  @apply bg-blue-500 text-white;
+}
+
+.btn-primary.btn-outlined {
+  @apply text-blue-700 border-blue-500;
+}
