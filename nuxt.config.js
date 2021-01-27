@@ -1,7 +1,5 @@
-import webpack from 'webpack'
-
 import ampify from './plugins/ampify'
-
+import svgoPlugins from './plugins/svgoPlugins'
 const isProd = process.env.NODE_ENV === 'production'
 
 import pages from './assets/js/generated/pages'
@@ -24,7 +22,7 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['./assets/css/tailwind.css', './assets/scss/oruga.scss'],
+  css: ['~/assets/css/tailwind.css', '~/assets/scss/oruga.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -57,6 +55,7 @@ export default {
   modules: [
     // A NuxtJS module that makes a 301 redirection to a non trailing slash URL
     'nuxt-trailingslash-module',
+    '@nuxtjs/svg-sprite',
     [
       'nuxt-i18n',
       {
@@ -110,6 +109,16 @@ export default {
     // ]
   ],
 
+  svgSprite: {
+    input: '~/assets/icons',
+    output: '~/static/img',
+    defaultSprite: 'sprite',
+    svgoConfig () {
+      return {
+        plugins: svgoPlugins()
+      }
+    }
+  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     proxy: true,
@@ -144,7 +153,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    cache: true,
     extractCSS: true,
     optimization: {
       minimize: isProd,

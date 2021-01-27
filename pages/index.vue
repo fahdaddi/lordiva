@@ -1,5 +1,8 @@
 <template>
   <section>
+    <svg-icon name="address_book" class="w-10 h-10" />
+    <svg-icon name="warning" class="w-10 h-10" />
+    <svg-icon name="user" class="w-10 h-10" />
     <o-field grouped group-multiline>
       <!-- <div class="control">
         <o-switch v-model="atRight"> Right position </o-switch>
