@@ -1,4 +1,5 @@
 module.exports = {
+  important: true,
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     content: [
@@ -9,7 +10,7 @@ module.exports = {
       'nuxt.config.js'
     ],
     options: {
-      whitelist: [],
+      whitelist: ['assets/css/*.scss', 'assets/css/oruga.scss'],
       whitelistPatternsChildren: []
     }
   },
@@ -18,7 +19,16 @@ module.exports = {
     extend: {}
   },
   variants: {
-    extend: {}
+    extend: {
+      animation: ['hover', 'focus', 'group-hover']
+    }
+  },
+  corePlugins: {
+    container: false,
+    fontFamily: false,
+    preflight: false,
+    ringWidth: false,
+    boxShadow: false
   },
   plugins: []
 }

@@ -1,0 +1,127 @@
+html {
+  font-family: $font-family;
+  box-sizing: border-box;
+
+  body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: $width-page + ($padding * 2); // add padding spaces
+  padding: ($padding - 4px) $padding;
+}
+
+.icon {
+  display: inline-flex;
+  align-self: center;
+  height: 1em;
+  width: 1em;
+  font-size: 1em;
+  fill: currentColor;
+
+  &.baseline {
+    position: relative;
+    top: 0.125em;
+  }
+
+  &.xs {
+    font-size: 0.8em;
+  }
+
+  &.sm {
+    font-size: 1.33em;
+  }
+
+  &.md {
+    font-size: 2em;
+  }
+
+  &.lg {
+    font-size: 3em;
+  }
+
+  &.xl {
+    font-size: 4.33em;
+  }
+
+  &.visa {
+    color: #1b226e;
+  }
+
+  &.paypal {
+    color: #002f86;
+  }
+
+  &.danger {
+    color: $danger;
+  }
+}
+
+.strike {
+  position: relative;
+  padding: 0 2px;
+  //margin-left: 4px;
+  white-space: nowrap;
+}
+
+.strike:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 1px solid;
+  border-color: inherit;
+  transform: rotate(-5deg);
+}
+
+.link,
+a {
+  color: $black;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: rgba($primary, 0.8);
+  }
+}
+
+// img {
+//   width: 100%;
+//   height: auto;
+// }
+
+@media (max-width: $breakpoint-md) {
+  .container {
+    overflow: hidden; // to prevent some gutters overflow on mobiles
+    padding: $padding-xs $padding-sm;
+
+    &.fw {
+      // fullwidth
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+
+      ul.breadcrumbs {
+        padding-left: $padding-sm !important;
+      }
+    }
+  }
+
+  .no-wrap {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: scroll !important;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+      -webkit-appearance: none;
+    }
+  }
+}

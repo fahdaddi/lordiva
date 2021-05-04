@@ -1,0 +1,80 @@
+$css-vars: false;
+$sass-vars: true;
+
+$base-font-size: 1rem !default;
+
+$base-border-radius: 4px !default;
+$base-rounded-border-radius: 9999px !default;
+$base-line-height: 1.5 !default;
+$base-disabled-opacity: 0.5 !default;
+
+$speed: 300ms !default;
+$speed-slow: 150ms !default;
+$speed-slower: 250ms !default;
+$easing: ease-out !default;
+
+$control-border-width: 1px !default;
+$control-height: 2.25em !default;
+$control-padding-vertical: calc(0.375em - #{$control-border-width});
+$control-padding-horizontal: calc(0.625em - #{$control-border-width});
+
+$whitelist: () !default;
+$variable-prefix: '--oruga-' !default;
+
+// Sizes
+
+$sizes: (
+  'small': 0.75rem,
+  'medium': 1.25rem,
+  'large': 1.5rem,
+) !default;
+
+$primary-invert: $white !default;
+
+$danger-invert: $white !default;
+$warning-invert: $black !default;
+$success-invert: $white !default;
+$info-invert: $white !default;
+
+$colors: (
+  'primary': (
+    $primary,
+    $primary-invert,
+  ),
+  'danger': (
+    $danger,
+    $danger-invert,
+  ),
+  'warning': (
+    $warning,
+    $warning-invert,
+  ),
+  'success': (
+    $success,
+    $success-invert,
+  ),
+  'info': (
+    $info,
+    $info-invert,
+  ),
+) !default;
+
+@import '@oruga-ui/oruga/src/scss/utilities/_animations.scss';
+@import '@oruga-ui/oruga/src/scss/utilities/_helpers.scss';
+
+// @import '@oruga-ui/oruga/src/scss/utilities/_base.scss';
+
+@import '@oruga-ui/oruga/src/scss/components/_input.scss';
+@import '@oruga-ui/oruga/src/scss/components/_button.scss';
+@import '@oruga-ui/oruga/src/scss/components/_autocomplete.scss';
+@import '@oruga-ui/oruga/src/scss/components/_checkbox.scss';
+@import '@oruga-ui/oruga/src/scss/components/_collapse.scss';
+@import '@oruga-ui/oruga/src/scss/components/_dropdown.scss';
+@import '@oruga-ui/oruga/src/scss/components/_field.scss';
+@import '@oruga-ui/oruga/src/scss/components/_input.scss';
+@import '@oruga-ui/oruga/src/scss/components/_radio.scss';
+@import '@oruga-ui/oruga/src/scss/components/_select.scss';
+@import '@oruga-ui/oruga/src/scss/components/_slider.scss';
+@import '@oruga-ui/oruga/src/scss/components/_switch.scss';
+@import '@oruga-ui/oruga/src/scss/components/_sidebar.scss';
+@import '@oruga-ui/oruga/src/scss/components/_tabs.scss';

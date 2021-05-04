@@ -1,0 +1,46 @@
+footer {
+  background: $black;
+
+  .top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: $padding-sm;
+
+    .left {
+      a {
+        font-weight: lighter;
+        font-size: 13px;
+        display: block;
+        color: $grey;
+        margin-bottom: $padding-xs / 4;
+
+        &:hover {
+          color: rgba($primary, 0.6);
+        }
+      }
+    }
+
+    .right {
+      a {
+        color: $grey;
+        margin-left: $padding-xs / 2;
+        font-size: 24px;
+
+        &:hover {
+          color: rgba($primary, 0.6);
+        }
+      }
+    }
+  }
+
+  .bottom {
+    border-top: 1px solid rgba($grey, 0.4);
+    padding-top: $padding-sm;
+    font-size: 12px;
+    font-weight: lighter;
+    color: rgba($primary, 0.6);
+    text-align: center;
+    cursor: pointer;
+  }
+}

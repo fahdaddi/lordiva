@@ -1,13 +1,32 @@
 <template>
-  <div class="bg-gray-100">
-    <div class="container bg-white">
-      <Nuxt />
-    </div>
+  <div class="wrap">
+    <Common />
+    <Header />
+    <main class="main">
+      <!-- TODO: Loader -->
+      <nuxt />
+    </main>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Common from '@/components/layouts/common/index'
+import Header from '@/components/layouts/common/Header'
+import Footer from '@/components/layouts/common/Footer'
+
 export default {
+  components: {
+    Common,
+    Header,
+    Footer,
+  },
+  data() {
+    return {
+      open: false,
+    }
+  },
+  methods: {},
   head() {
     let canonical = `${this.$config('url')}${this.$route.path}`
     canonical = canonical.replace('/amp', '')

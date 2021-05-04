@@ -10,7 +10,7 @@ export default function ({
 }) {
   // server side
   let http = process.env.HTTP
-  let origin = ''
+  let origin = process.env.HTTP
   if (req) {
     origin = http + req.headers.host
     $axios.defaults.headers.common['X-SSR'] = true
@@ -20,19 +20,14 @@ export default function ({
         if (cookie[i].trim().match('^token=')) {
           store.commit('SET_AUTH_TOKEN', cookie[i].replace(`token=`, '').trim())
         }
-        if (cookie[i].trim().match('^c_token=')) {
-          store.commit('SET_C_TOKEN', cookie[i].replace(`c_token=`, '').trim())
-        }
       }
     }
   } else origin = window.location.origin // Client side
 
-  if (store.state.auth_token)
-    $axios.defaults.headers.common['jwtAuthorization'] = store.state.auth_token
-  if (store.state.c_token)
-    $axios.defaults.headers.common['C-Token'] = store.state.c_token
+  if (store.state.token)
+    $axios.defaults.headers.common['jwtAuthorization'] = store.state.token
 
-  $axios.defaults.baseURL = origin + '/api/'
+  $axios.defaults.baseURL = process.env.API_URL
   $axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
   $axios.defaults.headers.common['X-ORIGIN'] = origin
 
@@ -54,19 +49,7 @@ export default function ({
 
   $axios.onResponse(res => {
     if (req && res.data.init) {
-      store.commit(
-        'UPDATE_CART_COUNT',
-        res.data.init.count ? res.data.init.count.cart : 0
-      )
-      store.commit(
-        'SET_ALTERNATES',
-        res.data.alternates !== undefined ? res.data.alternates : []
-      )
       store.commit('SET_ME', res.data.init.user)
-      store.commit('SET_AUTH_EXPIRES', res.data.init.token.expires)
-      store.commit('SET_MENU', res.data.init.nav)
-      // Only for AMP
-      if (res.data.init.brands) store.commit('SET_BRANDS', res.data.init.brands)
     }
   })
 }

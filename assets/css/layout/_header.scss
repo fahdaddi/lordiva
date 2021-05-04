@@ -1,0 +1,50 @@
+header {
+  height: $height-header;
+  position: sticky;
+  background: $white;
+  font-weight: 100;
+  font-size: 18px;
+  box-shadow: $box-shadow-elevation-1;
+  top: 0;
+  z-index: 999999;
+
+  .container {
+    height: $height-header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    .menu {
+      display: flex;
+      cursor: pointer;
+
+      .icon {
+        margin-right: 4px;
+      }
+
+      span {
+        line-height: 23px;
+      }
+    }
+
+    .logo {
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+    }
+
+    .right {
+      .icon {
+        margin-left: 4px;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '_variables';
+@import '_reset';
+@import 'oruga';
+
+@import './_global';
+
+@import './layout/_header';
+@import './layout/_footer';
+
+@import './components/_slider';
+@import './components/_products';
+
+@import './pages/_home';

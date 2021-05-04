@@ -1,28 +1,25 @@
+import path from 'path'
+const whitelister = require('purgecss-whitelister')
+
 import ampify from './plugins/ampify'
-import svgoPlugins from './plugins/svgoPlugins'
+
 const isProd = process.env.NODE_ENV === 'production'
 
-import pages from './assets/js/generated/pages'
-import locales from './assets/js/generated/locales'
+import locales from './assets/js/locales'
 
 export default {
-  globalName: 'APP',
+  globalName: 'Lordiva',
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'nuxt-oruga2-tail',
+    title: '%s - Optigura',
     meta: [
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'nuxt oruga tailwind'
-      }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/css/tailwind.css', '~/assets/scss/oruga.scss'],
+  css: ['~/assets/css/app.scss', '~/assets/css/tailwind.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -37,6 +34,14 @@ export default {
     {
       mode: 'all',
       src: '@/plugins/config'
+    },
+    {
+      mode: 'all',
+      src: '@/plugins/components/CSvg'
+    },
+    {
+      mode: 'all',
+      src: '@/plugins/components/CImg'
     }
   ],
 
@@ -47,15 +52,33 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss'
+    // '@nuxtjs/eslint-module',
+    // '@nuxtjs/tailwindcss'
+    '@nuxtjs/device'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    'nuxt-purgecss',
     // A NuxtJS module that makes a 301 redirection to a non trailing slash URL
     'nuxt-trailingslash-module',
-    '@nuxtjs/svg-sprite',
+    [
+      '~/modules/svg-sprite',
+      {
+        input: '~/assets/icons',
+        output: '~/static/img',
+        defaultSprite: 'sprite',
+        svgo: [
+          { removeEmptyAttrs: false },
+          { moveGroupAttrsToElems: false },
+          { collapseGroups: false },
+          { removeTitle: false },
+          { removeXMLNS: true },
+          { removeViewBox: false },
+          { removeDimensions: true }
+        ]
+      }
+    ],
     [
       'nuxt-i18n',
       {
@@ -63,11 +86,7 @@ export default {
         locales,
         routesNameSeparator: '_',
         lazy: true,
-        langDir: 'assets/js/generated/langs/',
-        detectBrowserLanguage: false,
-        differentDomains: true,
-        parsePages: false,
-        pages,
+        langDir: 'assets/js/langs/',
 
         // Called right before app's locale changes
         beforeLanguageSwitch: () => null,
@@ -86,62 +105,52 @@ export default {
           iconFileName: 'icon.png'
         },
         manifest: {
-          name: 'Optigura',
+          name: 'Lordiva Watch',
           lang: 'fr',
-          short_name: 'Optigura',
+          short_name: 'Lordiva',
           start_url: '/',
           display: 'standalone',
           background_color: '#f8f8f8',
           theme_color: '#f8f8f8',
-          description: 'Tous les produits de musculation en ligne',
-          icons: []
-          // crossorigin: 'use-credentials',
+          description:
+            'LORDIVA Watch la référence des montres très hautes gammes',
+          icons: [],
+          crossorigin: 'use-credentials'
         }
       }
     ]
-    // [
-    //   '@oruga-ui/oruga/nuxt',
-    //   {
-    //     button: {
-    //       override: false
-    //     }
-    //   }
-    // ]
   ],
 
-  svgSprite: {
-    input: '~/assets/icons',
-    output: '~/static/img',
-    defaultSprite: 'sprite',
-    svgoConfig () {
-      return {
-        plugins: svgoPlugins()
-      }
-    }
-  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    proxy: true,
+    proxy: false,
     credentials: false,
     redirectError: {
       401: '/401',
       404: '/404'
     }
   },
-  proxy: {
-    '/api/': {
-      target: process.env.API_URL,
-      pathRewrite: {
-        '^/api/': ''
-      }
-    }
-  },
   router: {
     middleware: ['isAmp'],
     linkActiveClass: 'alink',
     linkExactActiveClass: 'ealink',
-    linkPrefetchedClass: 'plink',
-    prefetchLinks: false
+    linkPrefetchedClass: 'plink'
+  },
+  purgeCSS: {
+    mode: 'postcss',
+    whitelistPatterns: [/^o-.*/],
+    whitelistPatternsChildren: [/^o-.*/],
+    content: [
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js',
+      'nuxt.config.js'
+    ],
+    whitelist: whitelister([
+      './assets/css/layout/*.scss',
+      './node_modules/@oruga-ui/oruga/src/scss/*.scss'
+    ])
   },
   buildDir: '.build',
   render: {
@@ -149,11 +158,14 @@ export default {
     // resourceHints: false,
   },
   // This feature is inspired by vue-cli modern mode: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-modern
-  modern: 'server',
+  modern: isProd ? 'server' : false,
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: true,
+    postcss: {
+      plugins: { tailwindcss: path.resolve(__dirname, './tailwind.config.js') }
+    },
     optimization: {
       minimize: isProd,
       runtimeChunk: !isProd,
@@ -186,20 +198,7 @@ export default {
   hooks: {
     // This hook is called before serving the html to the browser
     'render:route': (url, page, { req, res }) => {
-      page.html = page.html.replace(
-        /rel="manifest" href="/gi,
-        `rel="manifest" href="${process.env.CDN}`
-      )
-      page.html = page.html.replace(
-        /rel="stylesheet" href="/gi,
-        `rel="stylesheet" href="${process.env.CDN}`
-      )
-      page.html = page.html.replace(
-        /script src="/gi,
-        `script src="${process.env.CDN}`
-      )
-
-      if (url.includes('?amp=1')) {
+      if (url.includes('?amp=1') || url.includes('/amp')) {
         page.html = ampify(page.html)
       }
     }

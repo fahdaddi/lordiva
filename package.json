@@ -12,13 +12,17 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/pwa": "^3.0.2",
-    "@nuxtjs/svg-sprite": "^0.5.2",
     "@oruga-ui/oruga": "^0.2.2",
     "core-js": "^3.6.5",
+    "keen-slider": "^5.4.0",
+    "node-sass": "^5.0.0",
     "nuxt": "^2.14.6",
     "nuxt-i18n": "^6.18.0",
-    "nuxt-trailingslash-module": "^1.1.0"
+    "nuxt-purgecss": "^1.0.0",
+    "nuxt-trailingslash-module": "^1.1.0",
+    "purgecss-whitelister": "^2.4.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

@@ -19,14 +19,7 @@ import {
 // import '@oruga-ui/oruga/dist/oruga-lite.css'
 
 Vue.use(Config, {
-  button: {
-    override: true,
-    rootClass: 'btn',
-    roundedClass: 'btn-rounded',
-    outlinedClass: 'btn-outlined',
-    disabledClass: 'btn-disabled',
-    variantClass: 'btn-'
-  }
+  iconComponent: 'svg-icon'
 })
 Vue.use(Button)
 Vue.use(Collapse)
