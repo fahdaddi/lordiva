@@ -57,6 +57,8 @@ export default () => {
       enter_email_to_reset_password:
         'Entrez votre adresse email pour recevoir un lien et réinitialiser votre mot de passe',
       error_occurred: 'Oops, une erreur est survenue',
+      error_occurred_details:
+        'Éssayez de recharger la page. Nous avons été informés pour résoudre ce problème.',
       expire_at: 'Expire le',
       expired: 'Expiré',
       faq: 'FAQ',
@@ -194,6 +196,7 @@ export default () => {
       your_order_delivered_on: 'Votre commande sera livrée le',
       your_password_updated: 'Votre mot de passe a bien été mis à jour',
       your_review: 'Votre avis',
+      will_be_back_soon: 'Nous serons de retour bientôt',
       zip: 'Code postal'
     })
   })
