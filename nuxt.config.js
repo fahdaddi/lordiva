@@ -9,6 +9,9 @@ import locales from './assets/js/locales'
 
 export default {
   globalName: 'Lordiva',
+  server: {
+    host: '0.0.0.0'
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: '%s - Optigura',
