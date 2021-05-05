@@ -60,6 +60,7 @@
         </div>
       </div>
     </div>
+    <!--  -->
 
     <ul class="products container">
       <div class="title">
