@@ -4,10 +4,12 @@
 
 @import './_global';
 
+@import './layout/_common';
 @import './layout/_header';
 @import './layout/_footer';
 
 @import './components/_slider';
 @import './components/_products';
+@import './components/_tag';
 
 @import './pages/_home';

@@ -9,6 +9,7 @@ import {
   Input,
   Radio,
   Select,
+  Skeleton,
   Slider,
   Switch,
   Sidebar,
@@ -30,6 +31,7 @@ Vue.use(Field)
 Vue.use(Input)
 Vue.use(Radio)
 Vue.use(Select)
+Vue.use(Skeleton)
 Vue.use(Slider)
 Vue.use(Switch)
 Vue.use(Sidebar)

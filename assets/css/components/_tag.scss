@@ -1,0 +1,66 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba($black, .4);
+  border-radius: $border-radius;
+  background-color: $bg-cream;
+  border: solid 1px transparent;
+  padding: .32em .75em;
+  font-size: .8125rem;
+  white-space: nowrap;
+
+  &--small {
+    font-size: .6875rem;
+  }
+
+  &--rounded {
+    border-radius: 50rem;
+  }
+  
+  &--primary {
+    background-color: $primary;
+    color: $white;
+  }
+  
+  &--warning {
+    background-color: $warning;
+    color: $white;
+  }
+
+  &--success {
+    background-color: $success;
+    color: $white;
+  }
+
+  &--danger {
+    background-color: $danger;
+    color: $white;
+  }
+
+  &--outlined {
+    &--primary {
+      color: $primary;
+      border-color: $primary;
+      background-color: transparent;
+    }
+    
+    &--warning {
+      color: $warning;
+      border-color: $warning;
+      background-color: transparent;
+    }
+  
+    &--success {
+      color: $success;
+      border-color: $success;
+      background-color: transparent;
+    }
+  
+    &--danger {
+      color: $danger;
+      border-color: $danger;
+      background-color: transparent;
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-const CImg = () => import('~/components/common/CImg')
+const Tag = () => import("~/components/common/Tag");
 
-Vue.component('c-img', CImg)
+Vue.component("Tag", Tag);

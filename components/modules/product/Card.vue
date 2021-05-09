@@ -5,6 +5,7 @@
       :alt="product.name + ' - ' + product.brand.label"
       size="thumbs"
       type="product"
+      blank
     />
     <nuxt-link
       :to="`products/${product.permalink}`"
@@ -22,7 +23,7 @@
     </div>
     <o-button size="small" variant="primary" outlined>
       <c-svg class="baseline">cart</c-svg>
-      {{ $t('add_to_cart') }}
+      {{ $t("add_to_cart") }}
     </o-button>
   </li>
 </template>
@@ -34,22 +35,21 @@ export default {
       product: {
         id: 1,
         img:
-          'https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        name: 'name',
-        permalink: 'name',
+          "https://content.rolex.com/dam/2021/upright-bba-with-shadow/m226570-0001.png?imwidth=840",
+        name: "Explorer II",
+        permalink: "explorer_2",
         brand: {
           id: 1,
-          label: 'brand',
+          label: "Rolex",
         },
         price: {
           old: 120,
           selling: 100,
         },
       },
-    }
+    };
   },
-}
+};
 </script>
 
-<style>
-</style>
+<style></style>

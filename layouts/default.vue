@@ -2,7 +2,7 @@
   <div class="wrap">
     <Common />
     <Header />
-    <main class="main">
+    <main class="main" id="top">
       <!-- TODO: Loader -->
       <nuxt />
     </main>
@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import Common from '@/components/layouts/common/index'
-import Header from '@/components/layouts/common/Header'
-import Footer from '@/components/layouts/common/Footer'
+import Common from '@/components/layouts/common'
+import Header from '@/components/layouts/Header'
+import Footer from '@/components/layouts/Footer'
 
 export default {
   components: {
@@ -26,26 +26,20 @@ export default {
       open: false,
     }
   },
+  computed: {
+    meta_title() {
+      return this.$store.state.meta_title
+    },
+  },
   methods: {},
   head() {
-    let canonical = `${this.$config('url')}${this.$route.path}`
-    canonical = canonical.replace('/amp', '')
-    const link = [{ rel: 'canonical', href: canonical }]
+    let path = this.$route.path === '/' ? '' : this.$route.path
+    let canonical = `${this.$config('url')}${path}`
 
-    // TODO to be validated
-    this.$i18n.locales.forEach((l) => {
-      let path = this.switchLocalePath(l.code)
-
-      const p = path.indexOf('?')
-      path = path.replace('/amp', '')
-      path = path.substring(0, p !== -1 ? p : path.length)
-
-      // link.push({ rel: "alternate", hreflang: l.iso, href: `${path}/amp` });
-    })
-
+    let link = [{ rel: 'canonical', href: canonical }]
     return {
       htmlAttrs: { lang: this.$config('iso') },
-      title: 'homepage',
+      title: this.meta_title,
       link,
     }
   },

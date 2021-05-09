@@ -1,3 +1,17 @@
 {
-    "compile-hero.disable-compile-files-on-did-save-code": false
-}
+    "vetur.validation.template": false,
+  
+    // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
+    "editor.formatOnSave": false,
+    // Enable/disable default JavaScript formatter (For Prettier)
+    "javascript.format.enable": false,
+    // Use 'prettier-eslint' instead of 'prettier'. Other settings will only be fallbacks in case they could not be inferred from eslint rules.
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 1000,
+    "prettier.trailingComma": "none",
+    "css.validate": false,
+    "less.validate": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  }

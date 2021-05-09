@@ -28,6 +28,10 @@ html {
     top: 0.125em;
   }
 
+  &.error {
+    font-size: 700px;
+  }
+
   &.xs {
     font-size: 0.8em;
   }
@@ -70,7 +74,7 @@ html {
 
 .strike:before {
   position: absolute;
-  content: '';
+  content: "";
   left: 0;
   top: 50%;
   right: 0;
@@ -84,16 +88,93 @@ a {
   color: $black;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     color: rgba($primary, 0.8);
   }
 }
 
-// img {
-//   width: 100%;
-//   height: auto;
-// }
+.drop-hover {
+  .trigger {
+    position: relative;
+
+    &:hover {
+      .content {
+        visibility: visible;
+        opacity: 1;
+        top: 100%;
+      }
+    }
+
+    // menu overlay
+    .content {
+      display: block;
+      position: absolute;
+      visibility: hidden;
+      padding: $padding-sm;
+      color: $black;
+      border: solid 1px $border-color-light;
+      width: 300px;
+      font-size: 14px;
+      background: $white;
+      min-height: 80px;
+      cursor: auto;
+      opacity: 0;
+      transition: all 0.2s ease-in-out;
+      transition-delay: 0.2s;
+      left: -5%;
+      top: 200%;
+      z-index: 998;
+    }
+  }
+}
+
+.drawer {
+  margin-top: $height-header;
+  max-width: 92%;
+  width: $width-drawer-sm;
+  border: solid 1px $border-color-light;
+  transition: all 0.1s ease-in;
+
+  .close {
+    position: fixed;
+    height: 35px;
+    width: 35px;
+    line-height: 1.4;
+    text-align: center;
+    background: $white;
+    color: $grey-light;
+    font-size: 32px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 999999;
+    top: calc(#{$height-header} + 8px);
+    right: 10px;
+
+    &:hover {
+      color: $grey;
+    }
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding-left: $padding;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: solid 1px $border-color-light;
+  }
+
+  .body {
+    padding: $padding-sm $padding;
+  }
+}
+
+.o-skeleton {
+  width: auto;
+}
 
 @media (max-width: $breakpoint-md) {
   .container {
@@ -122,6 +203,21 @@ a {
     &::-webkit-scrollbar {
       display: none;
       -webkit-appearance: none;
+    }
+  }
+
+  .drawer {
+    .close {
+      top: auto;
+      bottom: $padding-sm/ 2;
+    }
+
+    .header {
+      padding-left: $padding-xs;
+    }
+
+    .body {
+      padding: $padding-xs;
     }
   }
 }

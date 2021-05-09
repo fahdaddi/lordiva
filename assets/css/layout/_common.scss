@@ -1,0 +1,10 @@
+.totop {
+  position: fixed;
+  bottom: $padding-sm;
+  right: $padding-sm;
+  opacity: 0.9;
+  width: 56px;
+  height: 56px;
+  box-shadow: $box-shadow-elevation-2;
+  z-index: 4;
+}

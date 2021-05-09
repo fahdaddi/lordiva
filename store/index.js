@@ -3,6 +3,7 @@ import Cookie from 'js-cookie'
 export const strict = false
 
 export const state = () => ({
+  meta_title: '',
   me: null,
   token: null,
   cart: {
@@ -14,6 +15,9 @@ export const state = () => ({
 export const getters = {}
 
 export const mutations = {
+  UPDATE_META_TITLE (state, data) {
+    state.meta_title = data
+  },
   SET_ME (state, account) {
     state.me = account
   },

@@ -4,12 +4,12 @@
     margin-bottom: $padding-sm;
 
     span {
-      padding-bottom: $padding-xs;
+      padding-bottom: $padding-xs / 2;
       font-size: 15px;
       font-weight: 600;
       line-height: 2;
       text-transform: uppercase;
-      border-bottom: 5px solid $primary;
+      border-bottom: 2px solid $primary;
     }
   }
 
@@ -26,8 +26,6 @@
       box-shadow: $box-shadow-elevation-1;
 
       img {
-        width: 100%;
-        height: auto;
         object-fit: cover;
       }
 
@@ -71,11 +69,16 @@
     > ul {
       margin: 0 (-$padding-xs);
       padding: $padding-xs 0;
+      
       > li {
-        height: fit-content;
         flex-basis: 45%;
         max-width: 45%;
         padding: $padding-xs;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
     }
   }

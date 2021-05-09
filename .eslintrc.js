@@ -13,7 +13,9 @@ module.exports = {
     'vue/component-name-in-template-casing': ['error', 'PascalCase'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'vue/v-bind-style': 'off'
+    'vue/v-bind-style': 'off',
+    'vue/no-v-html': 'off',
+    'vue/no-use-v-if-with-v-for': 'off'
   },
   globals: {
     $nuxt: true

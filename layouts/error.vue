@@ -3,39 +3,22 @@
     <div class="text-center mt-6">
       <div v-if="error.statusCode === 404" class="wrap">
         <h1>{{ $t('page_not_found') }}</h1>
-        <span class="body-2 grey-light">
+        <p class="body-2 grey-light">
           <nuxt-link to="/">
-            <c-svg class="baseline">arrow_back</c-svg>
+            <c-svg class="baseline">arrow-left</c-svg>
             {{ $t('homepage') }}
           </nuxt-link>
-        </span>
-        <c-img
-          src="/assets/icons/error-404.svg"
-          size="600x360"
-          alt="Error 404"
-          class="er"
-        />
+        </p>
+        <c-svg class="error">error-404</c-svg>
       </div>
       <div v-else-if="error.statusCode === 503" class="wrap">
         <h1>{{ $t('will_be_back_soon') }}</h1>
-        <c-img
-          src="/assets/icons/error-404.svg"
-          size="600x360"
-          alt="Maintenance"
-          class="er"
-        />
+        <c-svg class="error">server-down</c-svg>
       </div>
       <div v-else class="wrap">
         <h1>{{ $t('error_occurred') }}</h1>
-        <span class="body-2 grey-light">{{
-          $t('error_occurred_details')
-        }}</span>
-        <c-img
-          src="~/assets/icons/warning.svg"
-          size="600x360"
-          alt="Error"
-          class="er"
-        />
+        <p class="body-2 grey-light">{{ $t('error_occurred_details') }}</p>
+        <c-svg class="error">warning</c-svg>
       </div>
     </div>
   </main>
@@ -63,6 +46,7 @@ export default {
     else if (this.error.statusCode === 500) this.title = 'Error 500'
     else if (this.error.statusCode === 503)
       this.title = this.$i18n.t('will_be_back_soon')
+    this.$store.commit('UPDATE_META_TITLE', this.title)
   },
   head() {
     return {

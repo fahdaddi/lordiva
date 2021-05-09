@@ -1,5 +1,5 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-const CSvg = () => import('~/components/common/CSvg.vue')
+const CSvg = () => import("~/components/common/CSvg.vue");
 
-Vue.component('c-svg', CSvg)
+Vue.component("c-svg", CSvg);

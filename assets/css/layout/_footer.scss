@@ -12,7 +12,7 @@ footer {
         font-weight: lighter;
         font-size: 13px;
         display: block;
-        color: $grey;
+        color: rgba($grey-light, 0.6);
         margin-bottom: $padding-xs / 4;
 
         &:hover {
@@ -23,7 +23,7 @@ footer {
 
     .right {
       a {
-        color: $grey;
+        color: rgba($grey-light, 0.6);
         margin-left: $padding-xs / 2;
         font-size: 24px;
 
@@ -35,12 +35,12 @@ footer {
   }
 
   .bottom {
-    border-top: 1px solid rgba($grey, 0.4);
+    border-top: 1px solid $border-color;
     padding-top: $padding-sm;
     font-size: 12px;
     font-weight: lighter;
     color: rgba($primary, 0.6);
     text-align: center;
-    cursor: pointer;
+    // cursor: pointer;
   }
 }
