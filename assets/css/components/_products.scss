@@ -24,6 +24,7 @@
       padding: $padding-sm;
       text-align: center;
       box-shadow: $box-shadow-elevation-1;
+      cursor: pointer;
 
       img {
         object-fit: cover;
@@ -69,7 +70,7 @@
     > ul {
       margin: 0 (-$padding-xs);
       padding: $padding-xs 0;
-      
+
       > li {
         flex-basis: 45%;
         max-width: 45%;
@@ -78,6 +79,12 @@
         img {
           width: 100%;
           height: auto;
+        }
+
+        .price {
+          .selling {
+            display: block;
+          }
         }
       }
     }

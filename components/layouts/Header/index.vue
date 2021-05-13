@@ -1,7 +1,7 @@
 <template>
   <header id="header">
     <div class="container">
-      <span class="menu" @click="openMenu(null, true)">
+      <span class="menu" @click="openMenu(null)">
         <c-svg class="sm">menu</c-svg>
         <span>{{ $t("menu") }}</span>
       </span>

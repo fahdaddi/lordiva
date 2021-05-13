@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li @click.prevent="pushUrl(`/products/${product.permalink}`)">
     <c-img
       :src="product.img"
       :alt="product.name + ' - ' + product.brand.label"

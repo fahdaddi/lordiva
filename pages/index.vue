@@ -1,6 +1,11 @@
 <template>
   <section class="home">
-    <KeenSlider :autoplay="4000" loop navigation-arrows navigation-dots>
+    <KeenSlider
+      :autoplay="4000"
+      loop
+      :navigation-arrows="$device.isDesktop"
+      :navigation-dots="!$device.isDesktop"
+    >
       <KeenSlide v-for="(slide, i) in slides" :key="i">
         <div class="slide-container" @click="pushUrl(slide.url)">
           <c-img

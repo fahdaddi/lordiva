@@ -1,10 +1,18 @@
-@import '~/node_modules/keen-slider/keen-slider.min.css';
+@import "~/node_modules/keen-slider/keen-slider.min.css";
 
 .navigation-wrapper {
   position: relative;
 
   .keen-slider__slide {
     min-width: 100%;
+  }
+
+  &:hover {
+    .slide-container {
+      img {
+        filter: brightness(0.7);
+      }
+    }
   }
 
   .slide-container {
@@ -16,6 +24,7 @@
       width: 100%;
       height: auto;
       object-fit: cover;
+      transition: all 0.3s ease-in-out;
     }
   }
 

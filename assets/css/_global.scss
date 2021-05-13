@@ -4,6 +4,16 @@ html {
 
   body {
     margin: 0;
+
+    #main-layout {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+
+      .main {
+        flex-grow: 1;
+      }
+    }
   }
 }
 
@@ -219,5 +229,9 @@ a {
     .body {
       padding: $padding-xs;
     }
+  }
+
+  .icon.error {
+    font-size: 100px;
   }
 }

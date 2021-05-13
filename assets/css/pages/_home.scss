@@ -87,5 +87,14 @@
         }
       }
     }
+
+    .intro {
+      > div {
+        .img-container {
+          margin-right: $padding-xs;
+          min-width: 150px;
+        }
+      }
+    }
   }
 }
