@@ -10,7 +10,7 @@ html {
       flex-direction: column;
       min-height: 100vh;
 
-      .main {
+      main.main {
         flex-grow: 1;
       }
     }
@@ -182,8 +182,12 @@ a {
   }
 }
 
-.o-skeleton {
-  width: auto;
+.o-sklt {
+  vertical-align: unset;
+
+  .o-sklt__item {
+    margin: 0;
+  }
 }
 
 @media (max-width: $breakpoint-md) {
@@ -203,6 +207,7 @@ a {
   }
 
   .no-wrap {
+    display: flex !important;
     flex-wrap: nowrap !important;
     justify-content: flex-start !important;
     overflow-x: scroll !important;

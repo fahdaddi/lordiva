@@ -69,7 +69,8 @@
   .home {
     .navigation-wrapper {
       .slide-container {
-        img {
+        img,
+        .c-img {
           max-height: 200px;
         }
       }

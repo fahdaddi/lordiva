@@ -1,5 +1,5 @@
 <template>
-  <li @click.prevent="pushUrl(`/products/${product.permalink}`)">
+  <li @click.prevent="pushUrl(`/products/${product.slug}`)">
     <c-img
       :src="product.img"
       :alt="product.name + ' - ' + product.brand.label"
@@ -8,7 +8,7 @@
       blank
     />
     <nuxt-link
-      :to="`products/${product.permalink}`"
+      :to="`products/${product.slug}`"
       :title="product.name"
       class="name"
     >
@@ -37,7 +37,7 @@ export default {
         img:
           "https://content.rolex.com/dam/2021/upright-bba-with-shadow/m226570-0001.png?imwidth=840",
         name: "Explorer II",
-        permalink: "explorer_2",
+        slug: "explorer_2",
         brand: {
           id: 1,
           label: "Rolex",

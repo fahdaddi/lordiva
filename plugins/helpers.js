@@ -14,43 +14,22 @@ Vue.mixin({
       img_types: {
         logo: {
           format: { default: "svg", fallback: "svg" },
-          retina: true,
           sizes: {
-            main: { width: "90", height: "34" },
-            checkout: { width: "75", height: "28" },
-            mobile: { width: "80", height: "30" },
+            main: { width: "40px", height: "40px" },
           },
         },
         home: {
           format: { default: "webp", fallback: "jpg" },
-          retina: true,
           sizes: {
             slider: {
               width: { d: "1320", m: "310" },
               height: { d: "440", m: "180" },
             },
             main: { width: "380", height: "500" },
-            tcat1: {
-              width: { d: "872", m: "310" },
-              height: { d: "450", m: "180" },
-            },
-            tcat2: {
-              width: { d: "424", m: "310" },
-              height: { d: "450", m: "180" },
-            },
-            tcat3: {
-              width: { d: "424", m: "310" },
-              height: { d: "200", m: "180" },
-            },
-            tcat4: {
-              width: { d: "872", m: "310" },
-              height: { d: "200", m: "180" },
-            },
           },
         },
         product: {
           format: { default: "webp", fallback: "jpg" },
-          retina: true,
           sizes: {
             views: { width: "45", height: "45" },
             cartMini: { width: "80", height: "80" },
@@ -62,30 +41,8 @@ Vue.mixin({
         },
         brand: {
           format: { default: "webp", fallback: "png" },
-          retina: true,
           sizes: {
-            slider: { width: "80", height: "36", bg: "0" },
             list: { width: "62", height: "28", bg: "0" },
-          },
-        },
-        partner: {
-          format: { default: "webp", fallback: "png" },
-          retina: true,
-          sizes: {
-            slider: { width: "80", height: "36", bg: "0" },
-          },
-        },
-        blog: {
-          format: { default: "webp", fallback: "jpg" },
-          retina: true,
-          sizes: {
-            home: {
-              width: { d: "1320", m: "375" },
-              height: { d: "440", m: "280" },
-            },
-            list: { width: "495", height: "220" },
-            main: { width: "990", height: "360" },
-            mobile: { width: "420", height: "150" },
           },
         },
       },

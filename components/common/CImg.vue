@@ -1,7 +1,7 @@
 <template>
   <!-- TODO: o-skeleton in loading -->
   <div v-if="!intersected && lazy && !blank" v-bind:class="cls">
-    <o-skeleton :width="width" :height="height" />
+    <o-skeleton :width="width" :height="height" position="centered" />
   </div>
 
   <img
@@ -62,7 +62,7 @@ export default {
   }, // size="400x300" or "xs"
   computed: {
     cls() {
-      if (this.lazy) return this.intersected ? "loaded" : "loading";
+      if (this.lazy) return this.intersected ? "loaded" : "c-img";
       else return null;
     },
     srcImage() {

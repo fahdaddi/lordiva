@@ -13,7 +13,6 @@
             :src="slide.img"
             :alt="slide.title"
             :lazy="i != 0"
-            :force-retina="i == 0"
             type="home"
             size="slider"
           />
