@@ -1,0 +1,45 @@
+.checkout {
+  background: $bg-cream;
+  // height: 100%;
+
+  .cart {
+    ul {
+      li {
+        display: flex;
+        padding: $padding-sm;
+
+        img {
+          margin-right: $padding-xs;
+        }
+
+        .details {
+          flex-grow: 1;
+
+          a {
+            display: block;
+            font-weight: 600;
+          }
+
+          span {
+            color: rgba($grey, 0.8);
+            font-size: 12px;
+          }
+        }
+
+        &:not(:first-child){
+          border-top: 1px solid $border-color;
+        }
+      }
+    }
+  }
+
+  .cart-actions {
+    background: $bg-cream;
+    padding: $padding-sm;
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    bottom: 0;
+  }
+
+}

@@ -5,15 +5,16 @@
         <c-svg class="sm">menu</c-svg>
         <span>{{ $t("menu") }}</span>
       </span>
-      <c-img
-        class="logo"
-        :src="require('/assets/images/logo.png')"
-        :lazy="false"
-        :alt="$t('logo') + ' ' + $config('site')"
-        type="logo"
-        size="main"
-        @click="pushUrl(`/`)"
-      />
+      <nuxt-link to="/">
+        <c-img
+          class="logo"
+          :src="require('/assets/images/logo.png')"
+          :lazy="false"
+          :alt="$t('logo') + ' ' + $config('site')"
+          type="logo"
+          size="main"
+        />
+      </nuxt-link>
       <!-- :size="$device.isMobile ? 'mobile' : 'main'" -->
 
       <div class="right">

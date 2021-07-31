@@ -1,0 +1,119 @@
+main.account {
+  background: $bg-cream;
+
+  .box {
+    position: relative;
+    display: flex;
+    min-height: 300px;
+
+    > nav {
+      width: $width-account-nav;
+
+      .header {
+        display: flex;
+        align-items: center;
+        height: 64px;
+        border-bottom: 1px solid $grey-lighter;
+        padding: 4px $padding-sm;
+
+        img {
+          border-radius: 50%;
+          margin-right: $padding-xs;
+        }
+      }
+
+      ul {
+        padding: $padding-xs;
+        padding-left: 0;
+
+        li {
+          border-bottom-right-radius: 32px;
+          border-top-right-radius: 32px;
+          font-size: 14px;
+
+          a {
+            display: flex;
+            align-items: center;
+            padding: $padding-xs $padding-sm;
+            color: $grey-dark;
+            white-space: nowrap;
+
+            &:hover {
+              color: $grey-dark;
+            }
+
+            .icon {
+              font-size: 20px;
+              margin: 0 8px 2px 0;
+            }
+          }
+
+          &:hover {
+            background: rgba($grey-lighter, 0.2);
+          }
+
+          &.active {
+            background: $grey-lighter;
+
+            a {
+              color: $grey-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      border-left: 1px solid $grey-lighter;
+      flex: 1;
+
+      > .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+        border-bottom: 1px solid $grey-lighter;
+        padding: 4px 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  main.account {
+    > nav {
+      width: 50px;
+
+      .header {
+        height: 54px;
+        padding: 2px 5px;
+
+        span {
+          display: none;
+        }
+      }
+
+      ul {
+        padding: 5px 2px 5px 0;
+
+        li {
+          padding-left: 5px;
+
+          a {
+            padding: 10px;
+
+            span {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      > .title {
+        height: 54px;
+      }
+    }
+  }
+}

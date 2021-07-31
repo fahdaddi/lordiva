@@ -26,6 +26,10 @@ export default {
       type: [Object, String],
       default: null,
     },
+    blankSrc: {
+      type: String,
+      default: "/img/blank.svg",
+    },
     size: {
       type: String,
       required: true,
@@ -66,7 +70,7 @@ export default {
       else return null;
     },
     srcImage() {
-      return this.src;
+      return this.src || this.blankSrc;
     },
     width() {
       if (this.w == 0) return false;

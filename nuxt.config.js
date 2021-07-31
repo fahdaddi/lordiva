@@ -36,7 +36,23 @@ export default {
     },
     {
       mode: "all",
+      src: "~plugins/drawers.js",
+    },
+    {
+      mode: "all",
+      src: "~plugins/vee-validate.js",
+    },
+    {
+      mode: "all",
+      src: "~plugins/event-bus.js",
+    },
+    {
+      mode: "all",
       src: "@/plugins/config",
+    },
+    {
+      mode: "all",
+      src: "@/plugins/axios",
     },
     {
       mode: "client",
@@ -134,7 +150,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    proxy: false,
+    baseURL: process.env.API_URL,
     credentials: false,
     redirectError: {
       401: "/401",
@@ -180,6 +196,7 @@ export default {
     babel: {
       plugins: [["@babel/plugin-proposal-private-methods", { loose: true }]],
     },
+    transpile: ["vee-validate/dist/rules"],
     optimization: {
       minimize: isProd,
       runtimeChunk: !isProd,

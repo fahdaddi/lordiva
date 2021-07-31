@@ -37,7 +37,11 @@
         <span>{{ $t("top_products") }}</span>
       </div>
       <ul class="no-wrap">
-        <ProductCard v-for="i in 5" :key="i" />
+        <ProductCard
+          v-for="(product, i) in home.best_products"
+          :key="product.id"
+          :product="product"
+        />
       </ul>
     </ul>
 
@@ -71,7 +75,11 @@
         <span>{{ $t("latest_products") }}</span>
       </div>
       <ul class="no-wrap">
-        <ProductCard v-for="i in 5" :key="i" />
+        <ProductCard
+          v-for="(product, i) in home.last_products"
+          :key="product.id"
+          :product="product"
+        />
       </ul>
     </ul>
   </section>
@@ -87,6 +95,16 @@ export default {
     KeenSlider,
     KeenSlide,
     ProductCard,
+  },
+  async asyncData({ app, error }) {
+    return app.$axios
+      .get("home")
+      .then((res) => {
+        return {
+          home: res.data,
+        };
+      })
+      .catch((e) => app.router.app.serverError(e, error));
   },
   data() {
     return {

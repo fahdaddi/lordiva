@@ -1,0 +1,91 @@
+.modal,
+.drawer {
+  border: 1px solid $border-color-light;
+  transition: all 0.1s ease-in;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    border-bottom: 1px solid $border-color;
+    height: $height-header;
+    padding: 0 ($padding - 4px);
+    background: rgba($bg-cream, 0.98);
+    top: 0;
+    z-index: 9;
+
+    &.border-top {
+      border-top: 1px solid $border-color;
+    }
+
+    .close {
+      margin-left: $padding;
+      margin-right: -6px; // right align because of the icon space
+    }
+  }
+
+  .body {
+    padding: $padding-sm ($padding - 4px);
+    font-size: 14px;
+
+    .intro {
+      font-size: 15px;
+      color: $primary;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding-sm;
+    border-top: 1px solid $border-color-light;
+
+    .spacer {
+      flex-grow: 1;
+    }
+  }
+}
+
+.drawer {
+  width: 92%;
+  z-index: 999999;
+
+  &.sm {
+    max-width: $width-drawer-sm;
+
+    &.animate-slide-left-md {
+      max-width: $width-drawer-md + $drawer-width-extra;
+    }
+
+    &.animate-slide-left-sm {
+      transform: $width-drawer-sm + $drawer-width-extra;
+    }
+  }
+
+  &.md {
+    max-width: $width-drawer-md;
+
+    &.animate-slide-left-md {
+      max-width: $width-drawer-md + $drawer-width-extra;
+    }
+  }
+
+  > div {
+    height: 100%;
+  }
+}
+
+.o-modal__content {
+  width: 100%;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .modal,
+  .drawer {
+    .footer.column {
+      flex-direction: column;
+    }
+  }
+}

@@ -4,12 +4,18 @@
       <c-svg class="link sm baseline">user</c-svg>
 
       <template v-if="mounted">
-        <div v-if="user" class="content">
-          <o-button variant="success" expanded>{{ $t("signin") }}</o-button>
+        <div v-if="!user" class="content">
+          <o-button
+            variant="success"
+            size="small"
+            expanded
+            @click="$root.openDrawer('signin', {})"
+            >{{ $t("signin") }}</o-button
+          >
 
           <div class="or">or</div>
 
-          <o-button variant="info" outlined expanded>{{
+          <o-button variant="info" size="small" expanded>{{
             $t("signup")
           }}</o-button>
         </div>
@@ -22,13 +28,19 @@
           </li>
           <li>
             <nuxt-link to="/account/orders">
-              {{ $tc("my_order", 2) }}
+              {{ $t("my_orders") }}
             </nuxt-link>
           </li>
           <li>
             <nuxt-link to="/account/addresses">
               {{ $t("my_address_book") }}
             </nuxt-link>
+          </li>
+
+          <li>
+            <span class="cursor-pointer text-danger" @click="$root.signout">
+              {{ $t("signout") }}
+            </span>
           </li>
         </ul>
       </template>

@@ -1,8 +1,12 @@
 ///// custom variables
 $width-page: 1320px;
+$width-account-nav: 350px;
 $width-drawer-sm: 420px;
+$width-drawer-md: 600px;
+$drawer-width-extra: 200px;
 
 $height-header: 60px;
+$height-box-header: 50px;
 
 $padding: 20px;
 $padding-sm: 16px;
@@ -11,18 +15,23 @@ $padding-xs: 12px;
 $font-family: Sans-Serif;
 
 // Colors
-$primary: #dbc178;
+// $primary: #dbc178;
+$primary: #7caed4;
 $danger: #ce3535;
 $warning: #e69b43;
 $success: rgb(76, 175, 80);
-$info: rgb(24, 103, 192);
+$info: #3596d8;
 $white: #ffffff !default;
 $black: #000000 !default;
+$grey-darker: #2a2a2a !default;
+$grey-dark: #4a4a4a !default;
 $grey: #7a7a7a !default;
 $grey-light: #b5b5b5 !default;
 $grey-lighter: #dbdbdb !default;
 
 $bg-cream: #f9f9f9;
+$bg-updated: #daedda;
+$bg-deleted: #ffebee;
 
 $border-radius: 4px;
 $border-color: #ddd;

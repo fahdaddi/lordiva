@@ -1,86 +1,235 @@
 $css-vars: false;
 $sass-vars: true;
 
-$base-font-size: 1rem !default;
+/* core Oruga vars */
+$speed: 300ms;
+$speed-slow: 150ms;
+$speed-slower: 250ms;
+$easing: ease-out;
 
-$base-border-radius: 4px !default;
-$base-rounded-border-radius: 9999px !default;
-$base-line-height: 1.5 !default;
-$base-disabled-opacity: 0.5 !default;
-
-$speed: 300ms !default;
-$speed-slow: 150ms !default;
-$speed-slower: 250ms !default;
-$easing: ease-out !default;
-
-$control-border-width: 1px !default;
-$control-height: 2.25em !default;
+$control-border-width: 1px;
+$control-height: 2.625em;
 $control-padding-vertical: calc(0.375em - #{$control-border-width});
 $control-padding-horizontal: calc(0.625em - #{$control-border-width});
 
-$whitelist: () !default;
-$variable-prefix: '--oruga-' !default;
+$base-font-size: 1rem;
+$base-border-radius: 4px;
+$base-rounded-border-radius: 9999px;
+$base-line-height: 1.5;
+$base-disabled-opacity: 0.5;
+/* end core Oruga vars */
+
+// $field-label-font-weight: 400;
+$field-label-color: $grey;
+$field-margin-bottom: 0;
+
+$input-border-color: $border-color;
+$input-box-shadow: none;
+$input-color: rgba($black, .7);
+
+$select-arrow-size: 0.75em;
+$autocomplete-item-font-size: 14px;
+
+$checkbox-border-width: 1px;
+$checkbox-background-color: transparent;
+
+$slider-thumb-to-track-ratio: 4;
+
+$dropdown-item-font-size: 14px;
+
+$whitelist: ();
 
 // Sizes
-
 $sizes: (
-  'small': 0.75rem,
-  'medium': 1.25rem,
-  'large': 1.5rem,
-) !default;
+  "small": 0.8125rem,
+  // default .75rem,
+  "medium": 1.25rem,
+  "large": 1.5rem,
+);
 
-$primary-invert: $white !default;
+// modal
+$modal-content-max-height: calc(100vh - 70px);
+$modal-zindex: 999;
 
-$danger-invert: $white !default;
-$warning-invert: $black !default;
-$success-invert: $white !default;
-$info-invert: $white !default;
+// Colors invert
+$primary-invert: $white;
+$danger-invert: $white;
+$warning-invert: $white;
+$success-invert: $white;
+$info-invert: $white;
 $white-invert: $primary;
 
 $colors: (
-  'primary': (
+  "primary": (
     $primary,
     $primary-invert,
   ),
-  'danger': (
+  "danger": (
     $danger,
     $danger-invert,
   ),
-  'warning': (
+  "warning": (
     $warning,
     $warning-invert,
   ),
-  'success': (
+  "success": (
     $success,
     $success-invert,
   ),
-  'info': (
+  "info": (
     $info,
     $info-invert,
   ),
-  'white': (
-    $white,
-    rgba($white-invert, 0.8),
-  ),
-) !default;
+);
 
-@import '@oruga-ui/oruga/src/scss/utilities/_animations.scss';
-@import '@oruga-ui/oruga/src/scss/utilities/_helpers.scss';
+@import "@oruga-ui/oruga/src/scss/utilities/_animations.scss";
+@import "@oruga-ui/oruga/src/scss/utilities/_helpers.scss";
 
 // @import '@oruga-ui/oruga/src/scss/utilities/_base.scss';
 
-@import '@oruga-ui/oruga/src/scss/components/_skeleton.scss';
-@import '@oruga-ui/oruga/src/scss/components/_input.scss';
-@import '@oruga-ui/oruga/src/scss/components/_button.scss';
-@import '@oruga-ui/oruga/src/scss/components/_autocomplete.scss';
-@import '@oruga-ui/oruga/src/scss/components/_checkbox.scss';
-@import '@oruga-ui/oruga/src/scss/components/_collapse.scss';
-@import '@oruga-ui/oruga/src/scss/components/_dropdown.scss';
-@import '@oruga-ui/oruga/src/scss/components/_field.scss';
-@import '@oruga-ui/oruga/src/scss/components/_input.scss';
-@import '@oruga-ui/oruga/src/scss/components/_radio.scss';
-@import '@oruga-ui/oruga/src/scss/components/_select.scss';
-@import '@oruga-ui/oruga/src/scss/components/_slider.scss';
-@import '@oruga-ui/oruga/src/scss/components/_switch.scss';
-@import '@oruga-ui/oruga/src/scss/components/_sidebar.scss';
-@import '@oruga-ui/oruga/src/scss/components/_tabs.scss';
+@import "@oruga-ui/oruga/src/scss/components/_skeleton.scss";
+@import "@oruga-ui/oruga/src/scss/components/_notification.scss";
+@import "@oruga-ui/oruga/src/scss/components/_pagination.scss";
+@import "@oruga-ui/oruga/src/scss/components/_icon.scss";
+@import "@oruga-ui/oruga/src/scss/components/_input.scss";
+@import "@oruga-ui/oruga/src/scss/components/_button.scss";
+@import "@oruga-ui/oruga/src/scss/components/_autocomplete.scss";
+@import "@oruga-ui/oruga/src/scss/components/_checkbox.scss";
+@import "@oruga-ui/oruga/src/scss/components/_collapse.scss";
+@import "@oruga-ui/oruga/src/scss/components/_dropdown.scss";
+@import "@oruga-ui/oruga/src/scss/components/_field.scss";
+@import "@oruga-ui/oruga/src/scss/components/_modal.scss";
+@import "@oruga-ui/oruga/src/scss/components/_radio.scss";
+@import "@oruga-ui/oruga/src/scss/components/_select.scss";
+@import "@oruga-ui/oruga/src/scss/components/_slider.scss";
+@import "@oruga-ui/oruga/src/scss/components/_switch.scss";
+@import "@oruga-ui/oruga/src/scss/components/_sidebar.scss";
+@import "@oruga-ui/oruga/src/scss/components/_tabs.scss";
+@import "@oruga-ui/oruga/src/scss/components/_tooltip.scss";
+
+/*
+  Override Oruga default styles
+*/
+
+// Overriding radio inputs icon style
+@function svg_radio_check($color) {
+  $start: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 8 8">';
+  $content: '<circle r="2" fill="#{$color}" />';
+  $end: "</svg>";
+  @return svg-encode("#{$start}#{$content}#{$end}");
+}
+
+.o-radio__check {
+  border: 1px solid
+    variable("radio-active-background-color", $radio-active-background-color);
+  background-image: none;
+}
+
+.o-radio__check--checked {
+  background-image: url(svg_radio_check(
+    variable("radio-active-background-color", $radio-active-background-color)
+  ));
+}
+// End overriding radio inputs icon style
+
+// Hide scrollbar in tabs
+.o-tabs {
+  overflow: hidden;
+
+  &__nav {
+    &::-webkit-scrollbar {
+      display: none;
+      -webkit-appearance: none;
+    }
+  }
+}
+// End hide scrollbar in tabs
+
+.o-drop__item {
+  white-space: nowrap;
+}
+
+.o-input {
+  &::placeholder {
+    color: rgba($black, 0.25);
+    opacity: 1; /* Firefox */
+  }
+
+  &--white {
+    border-color: rgba($white, 0.7);
+    background-color: transparent;
+    color: $primary;
+
+    &::placeholder {
+      color: rgba($white, 0.7);
+    }
+  }
+
+  &__icon-left,
+  &__icon-right {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+p.o-field__message {
+  min-height: 18px;
+  line-height: 1.2;
+  margin-bottom: 0px;
+  color: $danger;
+}
+
+.o-btn {
+  &--white {
+    border-color: rgba($white, .7);
+    background-color: transparent;
+    color: rgba($white, .8);
+
+    &:hover {
+      background-color: rgba($white, .1);
+    }
+  }
+
+  &--grey {
+    background-color: transparent;
+    border-color: $border-color;
+    color: $primary;
+
+    &:hover {
+      background-color: rgba($black, .1);
+    }
+  }
+}
+
+.o-notification__icon {
+  // font-size: 24px;
+  position: relative;
+  top: 0.2em;
+}
+
+
+// Center pagination in mobile
+@media (max-width: $breakpoint-sm) {
+  .o-pag {
+    flex-grow: 1;
+
+    &__previous {
+      flex-grow: 0;
+    }
+
+    &__next {
+      order: 3;
+      flex-grow: 0;
+    }
+
+    &__list {
+      flex-grow: 0;
+    }
+  }
+}
+// End center pagination in mobile
+
+/*
+  End override Oruga default styles
+*/

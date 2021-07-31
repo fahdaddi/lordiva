@@ -2,7 +2,7 @@
   <li @click.prevent="pushUrl(`/products/${product.slug}`)">
     <c-img
       :src="product.img"
-      :alt="product.name + ' - ' + product.brand.label"
+      :alt="product.name"
       size="thumbs"
       type="product"
       blank
@@ -14,12 +14,13 @@
     >
       {{ product.name }}
     </nuxt-link>
-    <span class="brand">{{ product.brand.label }}</span>
-    <div class="price">
-      <span v-if="product.price.old" class="strike old">{{
-        price(product.price.old)
-      }}</span>
-      <span class="selling">{{ price(product.price.selling) }}</span>
+    <span v-if="product.brand" class="brand">{{ product.brand.name }}</span>
+    <div v-if="product.discount_price" class="price">
+      <span class="strike old">{{ price(product.price) }}</span>
+      <span class="selling">{{ price(product.discount_price) }}</span>
+    </div>
+    <div v-else class="price">
+      <span class="selling">{{ price(product.price) }}</span>
     </div>
     <o-button size="small" variant="primary" outlined>
       <c-svg class="baseline">cart</c-svg>
@@ -30,24 +31,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      product: {
-        id: 1,
-        img:
-          "https://content.rolex.com/dam/2021/upright-bba-with-shadow/m226570-0001.png?imwidth=840",
-        name: "Explorer II",
-        slug: "explorer_2",
-        brand: {
-          id: 1,
-          label: "Rolex",
-        },
-        price: {
-          old: 120,
-          selling: 100,
-        },
-      },
-    };
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>

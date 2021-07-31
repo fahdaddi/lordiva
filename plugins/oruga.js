@@ -1,41 +1,67 @@
-import Vue from 'vue'
+import Vue from "vue";
 import {
-  Button,
-  Collapse,
-  Dropdown,
   Autocomplete,
+  Button,
   Checkbox,
+  Collapse,
+  Config,
+  Dropdown,
   Field,
+  Icon,
   Input,
+  Modal,
+  Notification,
+  Pagination,
   Radio,
   Select,
+  Sidebar,
   Skeleton,
   Slider,
   Switch,
-  Sidebar,
   Tabs,
-  Config
-} from '@oruga-ui/oruga'
+  Tooltip,
+} from "@oruga-ui/oruga";
 // import '@oruga-ui/oruga/dist/oruga.css'
 // import '@oruga-ui/oruga/dist/oruga-lite.css'
 
 Vue.use(Config, {
-  iconComponent: 'svg-icon'
-})
-Vue.use(Button)
-Vue.use(Collapse)
-Vue.use(Dropdown)
-Vue.use(Autocomplete)
-Vue.use(Checkbox)
-Vue.use(Field)
-Vue.use(Input)
-Vue.use(Radio)
-Vue.use(Select)
-Vue.use(Skeleton)
-Vue.use(Slider)
-Vue.use(Switch)
-Vue.use(Sidebar)
-Vue.use(Tabs)
+  statusIcon: false,
+  iconComponent: "c-svg",
+  iconPack: "csvg",
+  customIconPacks: {
+    csvg: {
+      sizes: {
+        default: null,
+        small: "sm",
+        medium: "md",
+        large: "lg",
+      },
+    },
+  },
+  // input: {
+  //   autocomplete: "off",
+  // },
+});
+
+Vue.use(Autocomplete);
+Vue.use(Button);
+Vue.use(Checkbox);
+Vue.use(Collapse);
+Vue.use(Dropdown);
+Vue.use(Field);
+Vue.use(Icon);
+Vue.use(Input);
+Vue.use(Modal);
+Vue.use(Notification);
+Vue.use(Pagination);
+Vue.use(Radio);
+Vue.use(Select);
+Vue.use(Sidebar);
+Vue.use(Skeleton);
+Vue.use(Slider);
+Vue.use(Switch);
+Vue.use(Tabs);
+Vue.use(Tooltip);
 
 //   Carousel,
 //   Dialog,

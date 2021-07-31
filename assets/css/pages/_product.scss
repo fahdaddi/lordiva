@@ -7,7 +7,7 @@
     padding-bottom: $padding-sm;
 
     .imgs-container {
-      width: 45%;
+      min-width: 45%;
       flex-basis: 45%;
 
       .main-image {
@@ -72,6 +72,45 @@
         .stars {
           .icon {
             color: $primary;
+          }
+        }
+      }
+
+      .description {
+        font-size: 13px;
+        color: rgba($black, 0.7);
+        margin-top: $padding-xs;
+      }
+
+      .atc {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: $padding;
+
+        .qty-selector {
+          display: flex;
+          justify-content: space-between;
+          white-space: nowrap;
+          width: 140px;
+          margin-right: $padding;
+          user-select: none;
+
+          .icon {
+            border: solid 1px $border-color-dark;
+            height: 26px;
+            width: 26px;
+            padding: 4px;
+            color: $grey;
+            border-radius: $border-radius;
+            cursor: pointer;
+          }
+
+          input {
+            text-align: center;
+            width: 50px;
+            color: $grey;
+            font-size: 18px;
           }
         }
       }

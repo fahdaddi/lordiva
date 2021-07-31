@@ -1,9 +1,12 @@
 import Vue from "vue";
 import Cookie from "js-cookie";
+import placeholders from "~/assets/js/placeholders";
 
 Vue.mixin({
   data() {
     return {
+      placeholders,
+
       ddMenu: false,
       ddRight: false,
       ddMenu_content: null,
@@ -50,14 +53,6 @@ Vue.mixin({
       mounted: false,
     };
   },
-  computed: {
-    session() {
-      return {
-        expire: Cookie.get("token"),
-        token: Cookie.get("token"),
-      };
-    },
-  },
   errorCaptured(e, vm, details) {
     if (process.env.NODE_ENV === "development") console.log(e, vm, details);
     // Send captured error
@@ -80,6 +75,9 @@ Vue.mixin({
     },
     pushUrl(urlName, params = null) {
       this.$router.push(urlName, params);
+    },
+    view(name) {
+      return () => import("~/components/" + name + ".vue");
     },
     serverError(e, error) {
       const code = parseInt(e.response && e.response.status);
@@ -175,32 +173,36 @@ Vue.mixin({
         this.$store.commit("SET_AUTH_TOKEN", null);
         this.$store.commit("SET_ME", null);
         this.$store.commit("UPDATE_CART_COUNT", 0);
+        this.$store.commit("UPDATE_CART_TOTAL", 0);
+        this.$store.commit("UPDATE_CART_ID", null);
+        this.$store.commit("UPDATE_CART", []);
       }
     },
     // update cart in store if updateCart:true.
-    signin(data, updateCart = true) {
-      this.addCookies({
-        auth_token: { value: data.token, expires: data.expires },
+    signin(token) {
+      Cookie.set("token", token);
+    },
+    getUser() {
+      this.$axios.get("me").then((res) => {
+        this.$store.commit("SET_ME", res.data.user);
+        this.$store.commit("UPDATE_CART_COUNT", res.data.cart.count);
+        this.$store.commit("UPDATE_CART_TOTAL", res.data.cart.total);
+        this.$store.commit("UPDATE_CART_ID", res.data.cart.id);
+        this.$store.commit("UPDATE_CART", res.data.cart.cart_items);
+
+        this.$root.closeDrawer();
+        this.auth_loading = false;
       });
     },
     signout() {
-      return new Promise((resolve, reject) => {
-        const authToken = this.$store.state.token;
-        if (authToken) {
-          this.addTokens(this.$axios, {
-            auth_token: authToken,
-          });
-          this.$axios
-            .get("me/signout")
-            .then((response) => {
-              Cookie.remove("token");
-              Cookie.remove("c_token");
-              window.location.reload();
-              resolve(response);
-            })
-            .catch((e) => this.$root.clientError(e));
-        }
-      });
+      this.$axios
+        .get("logout")
+        .then(() => {
+          Cookie.remove("token");
+          Cookie.remove("c_token");
+          window.location.reload();
+        })
+        .catch((e) => this.$root.clientError(e));
     },
     getErrorMessage(error) {
       return error.msg;
@@ -234,25 +236,22 @@ Vue.mixin({
       return formattedPrice;
     },
     notify(content, color, timeout = 5000) {
-      this.snackbar = {
-        show: true,
-        content,
-        color,
-        timeout,
-      };
-    },
-    // cookies = Object : {'c_token': {value: cart.token, expires: cart.expires } }
-    addCookies(cookies) {
-      if (cookies.c_token) {
-        Cookie.set("c_token", cookies.c_token.value, {
-          expires: cookies.c_token.expires,
-        });
-      } else if (cookies.auth_token) {
-        if (cookies.auth_token.value !== null)
-          Cookie.set("token", cookies.auth_token.value, {
-            expires: cookies.auth_token.expires,
-          });
-      }
+      let icon =
+        color == "success"
+          ? "checkmark-circle"
+          : color == "danger"
+          ? "exclamation-triangle"
+          : "info-circle";
+      this.$oruga.notification.open({
+        message: content,
+        variant: color,
+        type: color,
+        hasIcon: true,
+        icon: icon,
+        iconSize: "notif-small",
+        position: "bottom-right",
+        duration: timeout,
+      });
     },
   },
 });
