@@ -1,6 +1,6 @@
 export default function ({ app, $axios, req, redirect, store }) {
   // server side
-  $axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+  // $axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
   $axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
   $axios.onError((e) => {
