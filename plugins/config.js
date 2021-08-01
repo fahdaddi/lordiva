@@ -14,7 +14,7 @@ export default async ({ app }, inject) => {
       "@context": "https://schema.org",
       "@type": "Organization",
       url: config_tld.url,
-      logo: config_tld.url + require("/assets/images/logo.svg"),
+      logo: config_tld.url + require("/assets/images/logo.png"),
       contactPoint: [
         {
           "@type": "ContactPoint",
