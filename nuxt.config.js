@@ -1,8 +1,6 @@
 import path from "path";
 const whitelister = require("purgecss-whitelister");
 
-import ampify from "./plugins/ampify";
-
 const isProd = process.env.NODE_ENV === "production";
 
 import locales from "./assets/js/locales";
@@ -228,10 +226,6 @@ export default {
   },
   hooks: {
     // This hook is called before serving the html to the browser
-    "render:route": (url, page, { req, res }) => {
-      if (url.includes("?amp=1") || url.includes("/amp")) {
-        page.html = ampify(page.html);
-      }
-    },
+    "render:route": (url, page, { req, res }) => {},
   },
 };
