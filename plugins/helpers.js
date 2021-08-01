@@ -11,7 +11,7 @@ Vue.mixin({
       ddRight: false,
       ddMenu_content: null,
 
-      blank_img: "/img/blank.svg",
+      blank_img: require("/assets/images/blank.svg"),
 
       // images types & sizes
       img_types: {

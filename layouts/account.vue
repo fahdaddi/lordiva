@@ -9,8 +9,8 @@
             <div class="header">
               <c-img
                 :alt="(user && user.name) || ''"
-                blank-src="/img/avatars/blank.svg"
-                src="/img/avatars/blank.svg"
+                :blank-src="require('/assets/images/avatars/blank.svg')"
+                :src="require('/assets/images/avatars/blank.svg')"
                 size="40x40"
               />
               <span v-if="user">{{ user.name }}</span>
