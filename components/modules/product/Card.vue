@@ -1,7 +1,7 @@
 <template>
   <li @click.prevent="pushUrl(`/products/${product.slug}`)">
     <c-img
-      :src="product.img"
+      :src="product.image"
       :alt="product.name"
       size="thumbs"
       type="product"

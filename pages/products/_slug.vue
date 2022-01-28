@@ -119,7 +119,9 @@ export default {
 
         let image;
         if (product.views) {
-          product.views && product.img && product.views.unshift(product.img);
+          product.views &&
+            product.image &&
+            product.views.unshift(product.image);
           image = product.views.map((img) => img);
         }
 
@@ -186,7 +188,7 @@ export default {
     };
   },
   created() {
-    // this.image = this.product.img;
+    this.image = this.product.image;
   },
   methods: {
     qtyMore() {
