@@ -6,11 +6,18 @@
       :navigation-arrows="$device.isDesktop"
       :navigation-dots="!$device.isDesktop"
     >
-      <KeenSlide v-for="(slide, i) in slides" :key="i">
-        <div class="slide-container" @click="pushUrl(slide.url)">
+      <KeenSlide v-for="(slide, i) in home.slides" :key="i">
+        <div
+          class="slide-container"
+          @click="
+            () => {
+              if (slide.slug) pushUrl(slide.slug);
+            }
+          "
+        >
           <c-img
             :key="i"
-            :src="slide.img"
+            :src="slide.image"
             :alt="slide.title"
             :lazy="i != 0"
             type="home"

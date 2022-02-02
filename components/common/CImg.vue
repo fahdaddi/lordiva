@@ -28,7 +28,7 @@ export default {
     },
     blankSrc: {
       type: String,
-      default: require("/assets/images/logo.png"),
+      default: require("/assets/images/blank.png"),
     },
     size: {
       type: String,
