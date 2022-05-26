@@ -1,8 +1,8 @@
 export default [
   {
-    site: "Lordiva",
-    country: "France",
-    code: "fr",
+    site: "Habous Art & Co.",
+    country: "Maroc",
+    code: "ma",
     iso: "fr-FR",
     file: "fr-FR.js",
     currency_code: "MAD",
@@ -13,7 +13,7 @@ export default [
     thousands_sep: " ",
     phone: "+212 6 66 12 84 88",
     search: {
-      suggestions: ["Swatch", "Rolex"],
+      suggestions: ["Kass", "Tajine", "Macramé"],
     },
     icons: {
       payment: ["visa", "mastercard", "paypal", "livraison"],

@@ -3,7 +3,8 @@
     background: $bg-cream;
   }
   .usp {
-    border-bottom: 1px solid $grey-lighter;
+    border-bottom: 1px solid $border-color-light;
+    border-top: 1px solid $border-color-light;
     background: $bg-cream;
 
     ul.items {

@@ -6,13 +6,13 @@ const isProd = process.env.NODE_ENV === "production";
 import locales from "./assets/js/locales";
 
 export default {
-  globalName: "Lordiva",
+  globalName: "Habous Art & Co.",
   server: {
     host: "0.0.0.0",
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: "%s - Lordiva",
+    titleTemplate: "%s - Habous Art & Co.",
     meta: [
       { name: "viewport", content: "width=device-width, initial-scale=1" },
     ],
@@ -127,18 +127,18 @@ export default {
       "@nuxtjs/pwa",
       {
         icon: {
-          iconFileName: "icon.png",
+          iconFileName: "logo.png",
         },
         manifest: {
-          name: "Lordiva Watch",
+          name: "Habous Art & Co.",
           lang: "fr",
-          short_name: "Lordiva",
+          short_name: "Habous-art-co",
           start_url: "/",
           display: "standalone",
           background_color: "#f8f8f8",
           theme_color: "#f8f8f8",
           description:
-            "LORDIVA Watch la référence des montres très hautes gammes",
+            "Habous Art & Co., la référence Marocaine des  faits main très hautes gammes",
           icons: [],
           crossorigin: "use-credentials",
         },

@@ -36,6 +36,7 @@
     </o-sidebar>
 
     <o-sidebar
+      v-if="$root.ddMenu"
       content-class="drawer lk-dark sm"
       fullheight
       overlay

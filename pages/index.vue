@@ -26,31 +26,6 @@
         </div>
       </KeenSlide>
     </KeenSlider>
-    <div class="usp">
-      <div class="container">
-        <ul class="items no-wrap">
-          <li v-for="item in usp" :key="item.title">
-            <c-svg>{{ item.icon }}</c-svg>
-            <p>
-              <span>{{ item.title }}</span>
-              {{ item.description }}
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <ul class="products container">
-      <div class="title">
-        <span>{{ $t("top_products") }}</span>
-      </div>
-      <ul class="no-wrap">
-        <ProductCard
-          v-for="(product, i) in home.best_products"
-          :key="product.id"
-          :product="product"
-        />
-      </ul>
-    </ul>
 
     <div class="intro">
       <div class="container">
@@ -71,11 +46,44 @@
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit alias
           omnis officiis aspernatur, commodi voluptatem hic beatae repudiandae.
           Rem quaerat vel vero consequuntur saepe consectetur officia, a
-          perspiciatis voluptatem velit!
+          perspiciatis voluptatem velit! Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Velit alias omnis officiis aspernatur, commodi
+          voluptatem hic beatae repudiandae. Rem quaerat vel vero consequuntur
+          saepe consectetur officia, a perspiciatis voluptatem velit! Lorem,
+          ipsum dolor sit amet consectetur adipisicing elit. Velit alias omnis
+          officiis aspernatur, commodi voluptatem hic beatae repudiandae. Rem
+          quaerat vel vero consequuntur saepe consectetur officia, a
+          perspiciatis voluptatem velit!s
         </div>
       </div>
     </div>
-    <!--  -->
+
+    <ul class="products container">
+      <div class="title">
+        <span>{{ $t("top_products") }}</span>
+      </div>
+      <ul class="no-wrap">
+        <ProductCard
+          v-for="(product, i) in home.best_products"
+          :key="product.id"
+          :product="product"
+        />
+      </ul>
+    </ul>
+
+    <div class="usp">
+      <div class="container">
+        <ul class="items no-wrap">
+          <li v-for="item in usp" :key="item.title">
+            <c-svg>{{ item.icon }}</c-svg>
+            <p>
+              <span class="block">{{ item.title }}</span>
+              {{ item.description }}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <ul class="products container">
       <div class="title">
@@ -138,20 +146,19 @@ export default {
       usp: [
         {
           icon: "package",
-          title: "Free Shipping.",
-          description:
-            "All orders of 599 DH or more of eligible items across any product category qualify.",
+          title: "Livraison Gratuite.",
+          description: "Toutes les commandes de 1,000 MAD ou plus.",
         },
         {
           icon: "dollar-sign",
-          title: "Payment Methods.",
-          description: "Cash on delivery, bank transfer, and PayPal",
+          title: "Méthodes de Payement.",
+          description: "Paiement à la livraison, virement bancaire et PayPal",
         },
         {
           icon: "back",
-          title: "Returns & Refunds.",
+          title: "Retours et Remboursements.",
           description:
-            "You can return any item purchased on Shella within 10 days of the delivery date.",
+            "Tout article acheté dans les 10 jours suivant la date de livraison.",
         },
       ],
     };
