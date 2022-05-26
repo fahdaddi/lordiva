@@ -1,11 +1,12 @@
-import Vue from "vue";
-import Cookie from "js-cookie";
+// import Vue from "vue";
+// import Cookie from "js-cookie";
 export const strict = false;
 
 export const state = () => ({
   meta_title: "",
   me: null,
   token: null,
+  menu: null,
   cart: {
     items: [],
     total: 0,
@@ -24,6 +25,9 @@ export const mutations = {
   },
   SET_AUTH_TOKEN(state, token) {
     state.token = token;
+  },
+  SET_MENU(state, data) {
+    state.menu = data;
   },
   UPDATE_CART_COUNT(state, number) {
     state.cart.count = number;

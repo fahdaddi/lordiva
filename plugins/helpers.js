@@ -7,10 +7,6 @@ Vue.mixin({
     return {
       placeholders,
 
-      ddMenu: false,
-      ddRight: false,
-      ddMenu_content: null,
-
       blank_img: require("/assets/images/blank.svg"),
 
       // images types & sizes
@@ -62,17 +58,6 @@ Vue.mixin({
     this.mounted = true;
   },
   methods: {
-    openMenu(content, right = false) {
-      if (content) {
-        this.$root.ddMenu_content = () =>
-          import("~/components/drawers" + content + ".vue");
-      }
-      this.$root.ddRight = right;
-      this.$root.ddMenu = true;
-    },
-    closeMenu() {
-      this.ddMenu = false;
-    },
     pushUrl(urlName, params = null) {
       this.$router.push(urlName, params);
     },

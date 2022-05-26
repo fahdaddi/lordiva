@@ -16,7 +16,8 @@ const Drawer = {
           drawer_child_options: {},
 
           ddMenu: false,
-          ddMenu_content: "",
+          ddRight: false,
+          ddMenu_content: null,
         };
       },
       methods: {
@@ -97,6 +98,16 @@ const Drawer = {
             this.drawer_child = false;
             this.drawer_child_content = null;
           }
+        },
+        openMenu(content, right = false) {
+          if (content) {
+            this.$root.ddMenu_content = this.view("drawers/" + content);
+          }
+          this.$root.ddRight = right;
+          this.$root.ddMenu = true;
+        },
+        closeMenu() {
+          this.ddMenu = false;
         },
       },
     });

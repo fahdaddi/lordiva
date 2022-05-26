@@ -42,7 +42,7 @@
       :right="$root.ddRight"
       :open.sync="$root.ddMenu"
     >
-      <component :is="$root.ddMenu_content" />
+      <component :is="$root.ddMenu_content" @close="$root.closeMenu()" />
     </o-sidebar>
 
     <!-- <o-button

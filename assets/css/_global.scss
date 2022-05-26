@@ -119,7 +119,9 @@ a:not([class*="o-"]) {
   cursor: pointer;
 
   &:hover {
-    color: rgba($primary, 0.8);
+    &:not(.dark){
+      color: rgba($primary, 0.8);
+    }
   }
 }
 

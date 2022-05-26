@@ -1,11 +1,11 @@
 <template>
   <header id="header">
     <div class="container">
-      <span class="menu" @click="openMenu(null)">
+      <span class="menu" @click="openMenu('Menu')">
         <c-svg class="sm">menu</c-svg>
         <span>{{ $t("menu") }}</span>
       </span>
-      <nuxt-link to="/">
+      <nuxt-link to="/" class="flex items-center">
         <c-img
           class="logo"
           :src="require('/assets/images/logo.png')"

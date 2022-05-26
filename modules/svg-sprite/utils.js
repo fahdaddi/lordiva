@@ -10,7 +10,7 @@ import {
   convertToSymbol,
   isSVGFile,
   wrap,
-  extractDefs
+  extractDefs,
 } from "./svg";
 
 //const logger = consola.withScope('@nuxtjs/svg-sprite')
@@ -34,7 +34,7 @@ async function newIcon(file, sprite, name, svgoPlugins = []) {
     name,
     path: file,
     content: symbol,
-    defs
+    defs,
   });
 }
 
@@ -44,7 +44,7 @@ async function createSprite(name, source, svgoPlugins = []) {
   if (!sprites[name]) {
     sprites[name] = {
       name,
-      symbols: {}
+      symbols: {},
     };
   }
   for (const file of files) {
@@ -69,12 +69,12 @@ async function writeSprite(name, directory) {
   }
 
   const symbols = Object.values(sprites[name].symbols)
-    .map(s => s.content)
+    .map((s) => s.content)
     .join("\n");
 
   const defs = Object.values(sprites[name].symbols)
-    .map(s => s.defs)
-    .filter(d => Boolean(d))
+    .map((s) => s.defs)
+    .filter((d) => Boolean(d))
     .join("\n");
 
   const svg = wrap(symbols, defs);
@@ -91,18 +91,13 @@ export async function addIcon(file, { input, output, defaultSprite, svgo }) {
   if (!sprites[sprite]) {
     sprites[sprite] = {
       name: sprite,
-      symbols: {}
+      symbols: {},
     };
   }
 
   await newIcon(file, sprite, iconName, svgo);
 
   await writeSprite(sprite, output);
-  consola.log({
-    type: "added",
-    message: `SVG icon ${chalk.bold(sprite + "/" + iconName)} added`,
-    icon: chalk.green.bold("+")
-  });
 }
 
 export async function invalidateIcon(file, { input, output, defaultSprite }) {
@@ -119,11 +114,6 @@ export async function invalidateIcon(file, { input, output, defaultSprite }) {
   }
 
   await writeSprite(sprite, output);
-  consola.log({
-    type: "removed",
-    message: `SVG icon ${chalk.bold(sprite + "/" + iconName)} removed`,
-    icon: chalk.red.bold("-")
-  });
 }
 
 export async function invalidateSprite(file, { input, output }) {

@@ -1,0 +1,31 @@
+.dd-menu {
+  ul {
+    margin-bottom: $padding-xs;
+
+    > li {
+      line-height: 2;
+      border-bottom: 1px solid $border-color;
+      color: $grey-dark;
+
+      a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $padding-xs / 4 0 $padding-xs / 4 $padding-xs / 2;
+      }
+
+      &.label {
+        padding: $padding-xs / 4 0;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        border-bottom: 0;
+      }
+
+      &.sub-child {
+        padding-left: $padding-xs;
+        border-bottom: 1px solid $border-color-light;
+      }
+    }
+  }
+}

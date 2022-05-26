@@ -1,6 +1,6 @@
 {
     "vetur.validation.template": false,
-  
+
     // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
     "editor.formatOnSave": false,
     // Enable/disable default JavaScript formatter (For Prettier)
@@ -13,5 +13,6 @@
     "less.validate": false,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
-    }
+    },
+    "typescript.tsdk": "node_modules/typescript/lib"
   }
