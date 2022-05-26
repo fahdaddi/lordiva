@@ -81,6 +81,11 @@ export default {
       return "drawer lk-dark" + d_class;
     },
   },
+  watch: {
+    "$route.fullPath"() {
+      this.$root.closeMenu();
+    },
+  },
   beforeMount() {
     if (this.$device.isDesktop) {
       window.addEventListener("scroll", this.scrollTop);

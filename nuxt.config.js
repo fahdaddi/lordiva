@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === "production";
 import locales from "./assets/js/locales";
 
 export default {
-  globalName: "Habous Art & Co.",
+  globalName: "Habous Art & Co",
   server: {
     host: "0.0.0.0",
   },
@@ -72,7 +72,11 @@ export default {
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: false,
-  loading: false,
+  loading: {
+    failedColor: "red",
+    height: "2px",
+    continuous: true,
+  },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -130,7 +134,7 @@ export default {
           iconFileName: "logo.png",
         },
         manifest: {
-          name: "Habous Art & Co.",
+          name: "Habous Art & Co",
           lang: "fr",
           short_name: "Habous-art-co",
           start_url: "/",
@@ -223,9 +227,5 @@ export default {
         });
       }
     },
-  },
-  hooks: {
-    // This hook is called before serving the html to the browser
-    "render:route": (url, page, { req, res }) => {},
   },
 };

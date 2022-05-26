@@ -3,12 +3,15 @@
     <div class="container">
       <section class="top">
         <div class="left">
-          <nuxt-link to="/refund-policy">{{ $t('returns_refunds') }}</nuxt-link>
-          <nuxt-link to="/privacy-policy">{{ $t('privacy_policy') }}</nuxt-link>
+          <nuxt-link to="/refund-policy">{{ $t("returns_refunds") }}</nuxt-link>
+          <span>|</span>
+          <nuxt-link to="/privacy-policy">{{ $t("privacy_policy") }}</nuxt-link>
+          <span>|</span>
           <nuxt-link to="/terms-conditions">{{
-            $t('terms_conditions')
+            $t("terms_conditions")
           }}</nuxt-link>
-          <nuxt-link to="/contact-us">{{ $t('contact_us') }}</nuxt-link>
+          <span>|</span>
+          <nuxt-link to="/contact-us">{{ $t("contact_us") }}</nuxt-link>
         </div>
 
         <div class="right">
@@ -20,9 +23,9 @@
 
       <section class="bottom">
         {{
-          $t('copyright', {
+          $t("copyright", {
             year: new Date().getFullYear(),
-            site: $config('site'),
+            site: $config("site"),
           })
         }}
       </section>
@@ -31,5 +34,5 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>

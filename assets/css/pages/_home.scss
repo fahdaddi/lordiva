@@ -38,7 +38,6 @@
   }
   .intro {
     background: $bg-cream;
-    margin-top: $padding-sm;
 
     > div {
       display: flex;
@@ -92,6 +91,8 @@
 
     .intro {
       > div {
+        flex-direction: column;
+
         .img-container {
           margin-right: $padding-xs;
           min-width: 150px;

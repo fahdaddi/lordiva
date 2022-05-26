@@ -4,7 +4,7 @@
     <Header />
     <main id="top" class="main">
       <!-- TODO: Loader -->
-      <nuxt />
+      <nuxt-child />
     </main>
     <Footer />
   </div>

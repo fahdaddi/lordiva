@@ -12,7 +12,7 @@
         <ul v-else class="content">
           <li v-for="item in cart.items" :key="item.id">
             <c-img
-              :src="item.product.img"
+              :src="item.product.image"
               :alt="item.product.name"
               size="cartMini"
               type="product"

@@ -8,6 +8,7 @@ Vue.mixin({
       placeholders,
 
       blank_img: require("/assets/images/blank.svg"),
+      default_logo: require("/assets/images/logo.png"),
 
       // images types & sizes
       img_types: {
@@ -220,7 +221,7 @@ Vue.mixin({
 
       return formattedPrice;
     },
-    notify(content, color, timeout = 5000) {
+    notify(content, color, timeout = 50000) {
       let icon =
         color == "success"
           ? "checkmark-circle"

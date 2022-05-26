@@ -1,5 +1,5 @@
 <template>
-  <li @click.prevent="pushUrl(`/products/${product.slug}`)">
+  <li @click.stop="pushUrl(`/products/${product.slug}`)">
     <c-img
       :src="product.image"
       :alt="product.name"
@@ -22,10 +22,10 @@
     <div v-else class="price">
       <span class="selling">{{ price(product.price) }}</span>
     </div>
-    <o-button size="small" variant="primary" outlined>
+    <!-- <o-button size="small" variant="primary" outlined>
       <c-svg class="baseline">cart</c-svg>
       {{ $t("add_to_cart") }}
-    </o-button>
+    </o-button> -->
   </li>
 </template>
 

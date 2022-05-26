@@ -6,7 +6,7 @@
 
   <img
     v-else
-    :src="intersected ? srcImage : blank_img"
+    :src="intersected ? srcImage : blankSrc"
     v-bind:class="cls"
     :width="width"
     :height="height"
@@ -23,7 +23,7 @@ export default {
       default: "none",
     },
     src: {
-      type: [Object, String],
+      type: [String],
       default: null,
     },
     blankSrc: {
@@ -100,6 +100,8 @@ export default {
 
       this.bg = this.types[this.type]["sizes"][this.size]["bg"];
     }
+
+    if (!this.lazy) this.intersected = true;
   },
   mounted() {
     this.observer = new IntersectionObserver((entries) => {

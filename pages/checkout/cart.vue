@@ -24,7 +24,7 @@
       <ul>
         <li v-for="item in cart.cart_items" :key="item.id">
           <c-img
-            :src="item.product.img"
+            :src="item.product.image"
             :alt="item.product.name"
             size="cart"
             type="product"

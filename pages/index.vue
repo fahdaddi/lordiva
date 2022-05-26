@@ -19,7 +19,7 @@
             :key="i"
             :src="slide.image"
             :alt="slide.title"
-            :lazy="i != 0"
+            :lazy="i != 1"
             type="home"
             size="slider"
           />
@@ -32,7 +32,7 @@
         <div class="img-container">
           <c-img
             class="logo"
-            :src="require('/assets/images/logo.png')"
+            :src="$root.default_logo"
             :lazy="false"
             :alt="$t('logo') + ' ' + $config('site')"
             type="logo"
@@ -58,13 +58,13 @@
       </div>
     </div>
 
-    <ul class="products container">
+    <ul class="products container pb-0">
       <div class="title">
         <span>{{ $t("top_products") }}</span>
       </div>
       <ul class="no-wrap">
         <ProductCard
-          v-for="(product, i) in home.best_products"
+          v-for="product in home.best_products"
           :key="product.id"
           :product="product"
         />
@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <ul class="products container">
+    <ul class="products container pb-0">
       <div class="title">
         <span>{{ $t("latest_products") }}</span>
       </div>

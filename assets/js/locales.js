@@ -1,8 +1,8 @@
 export default [
   {
-    site: "Habous Art & Co.",
+    site: "Habous Art & Co",
     country: "Maroc",
-    code: "ma",
+    code: "fr",
     iso: "fr-FR",
     file: "fr-FR.js",
     currency_code: "MAD",

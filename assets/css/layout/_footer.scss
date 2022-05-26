@@ -1,25 +1,23 @@
 footer {
   background: $black;
+  color: rgba($grey-light, 0.8) !important;
+  font-size: 13px;
+
+  a {
+    color: rgba($grey-light, 0.9) !important;
+    margin-bottom: $padding-xs / 4;
+
+    &:hover {
+      color: rgba($primary, 0.6) !important;
+    }
+  }
 
   .top {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     padding-bottom: $padding-sm;
-
-    .left {
-      a {
-        font-weight: lighter;
-        font-size: 13px;
-        display: block;
-        color: rgba($grey-light, 0.6);
-        margin-bottom: $padding-xs / 4;
-
-        &:hover {
-          color: rgba($primary, 0.6);
-        }
-      }
-    }
+    font-weight: lighter;
 
     .right {
       a {
@@ -35,12 +33,10 @@ footer {
   }
 
   .bottom {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid rgba($border-color-dark, 0.2);
     padding-top: $padding-sm;
     font-size: 12px;
     font-weight: lighter;
-    color: rgba($primary, 0.6);
     text-align: center;
-    // cursor: pointer;
   }
 }

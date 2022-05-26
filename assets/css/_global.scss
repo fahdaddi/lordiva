@@ -17,6 +17,11 @@ html {
   }
 }
 
+.nuxt-progress {
+  z-index: 9999999;
+  background-color: $primary !important
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;

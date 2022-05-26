@@ -8,7 +8,7 @@
       <nuxt-link to="/" class="flex items-center">
         <c-img
           class="logo"
-          :src="require('/assets/images/logo.png')"
+          :src="$root.default_logo"
           :lazy="false"
           :alt="$t('logo') + ' ' + $config('site')"
           type="logo"
