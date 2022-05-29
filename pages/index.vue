@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <ul class="products container pb-0">
+    <ul class="products container">
       <div class="title">
         <span>{{ $t("top_products") }}</span>
       </div>
@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <ul class="products container pb-0">
+    <ul class="products container">
       <div class="title">
         <span>{{ $t("latest_products") }}</span>
       </div>

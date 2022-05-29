@@ -56,23 +56,20 @@
       border: none;
       width: 5px;
       height: 5px;
-      background: $black;
+      background: rgba($white, .25);
+      border: 1px solid rgba($black, .25);
       border-radius: 50%;
       margin: 0 5px;
       padding: 4px;
       cursor: pointer;
-
-      &:hover {
-        background: $white;
-      }
 
       &:focus {
         outline: none;
       }
 
       &.active {
-        width: 10px;
-        height: 10px;
+        background: rgba($white, .5);
+        border: 1px solid rgba($black, .8);
       }
     }
   }

@@ -23,7 +23,8 @@
       max-width: 20%;
       padding: $padding-sm;
       text-align: center;
-      box-shadow: $box-shadow-elevation-1;
+      // box-shadow: $box-shadow-elevation-1;
+      outline: 1px solid $border-color-light;
       cursor: pointer;
 
       img {
@@ -69,17 +70,17 @@
   .products {
     > ul {
       margin: 0 (-$padding-xs);
-      padding: $padding-xs 0;
 
       > li {
         flex-basis: 45%;
         max-width: 45%;
+        min-width: 200px;
         padding: $padding-xs;
 
         img,
         .c-img {
           width: 100%;
-          height: auto;
+          height: 150px;
         }
 
         .price {

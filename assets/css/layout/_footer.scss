@@ -1,10 +1,11 @@
 footer {
-  background: $black;
-  color: rgba($grey-light, 0.8) !important;
+  background: $bg-cream;
+  color: rgba($grey-dark, 0.7) !important;
+  border-top: 3px solid $border-color;
   font-size: 13px;
 
   a {
-    color: rgba($grey-light, 0.9) !important;
+    color: rgba($grey-dark, 0.7) !important;
     margin-bottom: $padding-xs / 4;
 
     &:hover {
@@ -20,8 +21,10 @@ footer {
     font-weight: lighter;
 
     .right {
+      flex-shrink: 0;
+
       a {
-        color: rgba($grey-light, 0.6);
+        color: rgba($grey-dark, 0.7);
         margin-left: $padding-xs / 2;
         font-size: 24px;
 

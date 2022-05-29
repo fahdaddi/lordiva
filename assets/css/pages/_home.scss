@@ -3,9 +3,8 @@
     background: $bg-cream;
   }
   .usp {
-    border-bottom: 1px solid $border-color-light;
-    border-top: 1px solid $border-color-light;
     background: $bg-cream;
+    border-bottom: 1px solid $border-color-light;
 
     ul.items {
       display: flex;
@@ -38,6 +37,7 @@
   }
   .intro {
     background: $bg-cream;
+    border-bottom: 1px solid $border-color-light;
 
     > div {
       display: flex;
