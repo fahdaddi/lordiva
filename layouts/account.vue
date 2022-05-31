@@ -9,8 +9,7 @@
             <div class="header">
               <c-img
                 :alt="(user && user.name) || ''"
-                :blank-src="require('/assets/images/avatars/blank.svg')"
-                :src="require('/assets/images/avatars/blank.svg')"
+                :src="default_avatar"
                 size="40x40"
               />
               <span v-if="user">{{ user.name }}</span>
@@ -41,7 +40,7 @@
                   </span>
                 </nuxt-link>
               </li>
-              <li
+              <!-- <li
                 v-bind:class="{
                   active: $route.path == '/account/orders',
                 }"
@@ -52,13 +51,13 @@
                     {{ $t("my_orders") }}
                   </span>
                 </nuxt-link>
-              </li>
+              </li> -->
             </ul>
           </nav>
 
           <div class="content">
             <div class="title">
-              <span class="box-title">{{ meta_title }}</span>
+              <!-- <span class="box-title">{{ meta_title }}</span> -->
             </div>
 
             <nuxt v-if="is_auth" class="p-4" />

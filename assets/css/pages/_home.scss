@@ -5,6 +5,7 @@
   .usp {
     background: $bg-cream;
     border-bottom: 1px solid $border-color-light;
+    border-top: 1px solid $border-color-light;
 
     ul.items {
       display: flex;
@@ -35,10 +36,8 @@
       }
     }
   }
-  .intro {
-    background: $bg-cream;
-    border-bottom: 1px solid $border-color-light;
 
+  .intro {
     > div {
       display: flex;
       align-items: center;
@@ -51,8 +50,11 @@
       .text {
         flex-grow: 1;
         color: $grey;
+        background: $bg-cream;
+        padding: $padding-xs;
         font-weight: lighter;
         font-size: 12px;
+        border-radius: $border-radius;
 
         .site {
           font-size: 20px;

@@ -3,8 +3,9 @@
     margin-bottom: $padding-xs;
 
     > li {
+      font-weight: 200;
       line-height: 2;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid $border-color-light;
       color: $grey-dark;
 
       a {
@@ -15,16 +16,14 @@
       }
 
       &.label {
-        padding: $padding-xs / 4 0;
-        font-size: 14px;
-        font-weight: 600;
         text-transform: uppercase;
+        font-weight: 500;
         border-bottom: 0;
       }
 
       &.sub-child {
+        font-size: 12px;
         padding-left: $padding-xs;
-        border-bottom: 1px solid $border-color-light;
       }
     }
   }

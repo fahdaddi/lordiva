@@ -9,7 +9,7 @@
           <p>{{ $t("your_cart_is_empty") }}</p>
         </div>
 
-        <ul v-else class="content">
+        <ul v-else class="content p-0">
           <li v-for="item in cart.items" :key="item.id">
             <c-img
               :src="item.product.image"

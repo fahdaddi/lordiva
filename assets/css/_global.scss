@@ -12,6 +12,7 @@ html {
 
       main.main {
         flex-grow: 1;
+        margin-bottom: $padding-sm;
       }
     }
   }
@@ -19,7 +20,7 @@ html {
 
 .nuxt-progress {
   z-index: 9999999;
-  background-color: $primary !important
+  background-color: $primary !important;
 }
 
 .container {
@@ -124,13 +125,13 @@ a:not([class*="o-"]) {
   cursor: pointer;
 
   &:hover {
-    &:not(.dark){
+    &:not(.dark) {
       color: rgba($primary, 0.8);
     }
   }
 }
 
-.text-danger{
+.text-danger {
   color: $danger;
 }
 
@@ -210,13 +211,15 @@ ul.address-book {
     position: relative;
     min-height: 45px;
     height: 210px;
+    outline: 1px solid $border-color;
+    border-radius: $border-radius;
+    overflow: hidden;
 
     .addr-container {
       font-size: 13px;
       padding: 14px $padding-sm;
       height: 210px;
       transition: background-color 0.8s ease-out;
-      box-shadow: $box-shadow-elevation-1;
 
       &.active {
         cursor: auto;
@@ -259,20 +262,20 @@ ul.address-book {
       padding: $padding-xs $padding-sm;
       bottom: 0;
       left: 0;
+      border-bottom-right-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
     }
 
     &.new-addr {
-      padding: 6px;
       display: flex;
-      border: dashed 2px $border-color;
-      font-size: 15px;
-      color: $grey-light;
-      background: $bg-cream;
-      text-align: center;
-      cursor: pointer;
       flex-direction: column;
+      text-align: center;
       justify-content: center;
-      box-shadow: none;
+      color: $grey-light;
+      background: rgba($bg-cream, .5);
+      padding: 6px;
+      font-size: 15px;
+      cursor: pointer;
     }
   }
 }

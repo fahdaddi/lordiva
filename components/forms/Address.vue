@@ -10,7 +10,7 @@
         v-model="myAddress.f_name"
         class="col-span-12"
         :label="$t('fname')"
-        :placeholder="placeholders.address.fname"
+        :placeholder="placeholders.address.full_name"
         maxlength="100"
         vid="f_name"
         rules="required"
@@ -19,7 +19,7 @@
       <OInputValidation
         v-model="myAddress.l_name"
         class="col-span-12"
-        :label="$tc('name', 1)"
+        :label="$t('lname')"
         :placeholder="placeholders.address.lname"
         maxlength="100"
         vid="l_name"

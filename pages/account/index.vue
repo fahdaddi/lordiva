@@ -10,10 +10,10 @@
       <OInputValidation
         v-model="user.name"
         class="col-span-12 md:col-span-6"
-        :label="$t('fname')"
-        :placeholder="placeholders.user.fname"
+        :label="$t('full_name')"
+        :placeholder="placeholders.user.full_name"
         maxlength="30"
-        vid="fname"
+        vid="full_name"
         rules="required|min:2"
       />
 
@@ -67,7 +67,7 @@ export default {
       .then((res) => {
         store.commit("SET_ME", res.data.user);
         store.commit("UPDATE_CART_COUNT", res.data.cart.count);
-        this.$store.commit("UPDATE_CART_TOTAL", res.data.cart.total);
+        store.commit("UPDATE_CART_TOTAL", res.data.cart.total);
         store.commit("UPDATE_CART_ID", res.data.cart.id);
         store.commit("UPDATE_CART", res.data.cart.cart_items);
         return {

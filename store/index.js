@@ -45,7 +45,6 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit }, { req, app }) {
-    console.log(req.headers);
     const cookie = req.headers.cookie ? req.headers.cookie.split(";") : null;
     for (let i = 0; i < cookie.length; ++i) {
       if (cookie[i].trim().match("^token=")) {

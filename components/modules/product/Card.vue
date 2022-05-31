@@ -1,6 +1,7 @@
 <template>
-  <li @click.stop="pushUrl(`/products/${product.slug}`)">
+  <li @click="pushUrl('products-slug', { slug: product.slug })">
     <c-img
+      :key="product.slug"
       :src="product.image"
       :alt="product.name"
       size="thumbs"
@@ -8,7 +9,12 @@
       blank
     />
     <nuxt-link
-      :to="`products/${product.slug}`"
+      :to="
+        localePath({
+          name: 'products-slug',
+          params: { slug: product.slug },
+        })
+      "
       :title="product.name"
       class="name"
     >

@@ -19,24 +19,32 @@
           display: block;
         }
       }
+    }
 
-      ul.views {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: -($padding-xs/ 2);
-        margin-right: -($padding-xs/ 2);
+    ul.views {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -($padding-xs/ 2);
+      margin-right: -($padding-xs/ 2);
 
-        li {
-          margin: 0 ($padding-xs/ 2) $padding-xs;
-          cursor: pointer;
-          padding: $padding-xs;
-          border: 1px solid $border-color-light;
-          border-radius: $border-radius;
-          transition: all 0.3s ease-in-out;
+      li {
+        margin: ($padding-xs/ 2);
+        cursor: pointer;
+        padding: $padding-xs;
+        border: 1px solid $border-color-light;
+        border-radius: $border-radius;
+        transition: all 0.2s ease-in-out;
 
-          &.active {
-            border: 1px solid $border-color-dark;
-          }
+        img {
+          object-fit: cover;
+        }
+        &.active,
+        &:hover {
+          border: 1px solid $border-color-dark;
+        }
+
+        &.soldout {
+          opacity: 0.5;
         }
       }
     }
@@ -76,13 +84,26 @@
         }
       }
 
+      .size {
+        display: flex;
+        align-items: center;
+        margin: $padding-sm 0;
+        color: $grey-dark;
+        font-weight: 200;
+        font-size: 14px;
+
+        .tag {
+          font-size: 8px;
+        }
+      }
+
       .description {
         font-size: 13px;
         color: rgba($black, 0.7);
         margin-top: $padding-xs;
       }
 
-      .atc {
+      .qty {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -127,19 +148,21 @@
 @media (max-width: $breakpoint-sm) {
   .product-page {
     .product {
-      display: block;
+      flex-direction: column-reverse;
 
       .imgs-container {
+        flex-direction: column-reverse;
         width: 100%;
-        border-bottom: 1px solid rgba($border-color-light, 0.5);
+        border-top: 1px solid rgba($border-color-light, 0.5);
 
         .main-image {
-          padding: $padding-xs;
+          padding: 0;
 
           img,
           .c-img .o-sklt__item {
-            max-width: 100%;
             height: auto;
+            width: fit-content;
+            max-width: 100%;
           }
         }
 

@@ -7,6 +7,7 @@ footer {
   a {
     color: rgba($grey-dark, 0.7) !important;
     margin-bottom: $padding-xs / 4;
+    display: inline-flex;
 
     &:hover {
       color: rgba($primary, 0.6) !important;

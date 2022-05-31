@@ -7,8 +7,9 @@ Vue.mixin({
     return {
       placeholders,
 
-      blank_img: require("/assets/images/blank.svg"),
+      blank_img: require("/assets/images/blank.png"),
       default_logo: require("/assets/images/logo.png"),
+      default_avatar: require("/assets/images/avatar.png"),
 
       // images types & sizes
       img_types: {
@@ -31,11 +32,11 @@ Vue.mixin({
         product: {
           format: { default: "webp", fallback: "jpg" },
           sizes: {
-            views: { width: "45", height: "45" },
+            views: { width: "55", height: "55" },
             cartMini: { width: "80", height: "80" },
             cart: { width: "120", height: "120" },
             thumbs: { width: "180", height: "180" },
-            main: { width: "400", height: "400" },
+            main: { width: "600", height: "600" },
             large: { width: "1000", height: "1000" }, // also used in the xml sent to CAR & shopping feed
           },
         },
@@ -51,7 +52,7 @@ Vue.mixin({
     };
   },
   errorCaptured(e, vm, details) {
-    if (process.env.NODE_ENV === "development") console.log(e, vm, details);
+    // if (process.env.NODE_ENV === "development") console.log(e, vm, details);
     // Send captured error
     return false;
   },
@@ -59,8 +60,18 @@ Vue.mixin({
     this.mounted = true;
   },
   methods: {
-    pushUrl(urlName, params = null) {
-      this.$router.push(urlName, params);
+    pushUrl(urlName, params = null, query = null) {
+      this.$router.push(this.getUrl(urlName, params, query));
+    },
+    getUrl(urlName, params = null, query = null) {
+      let routeParams = {};
+      if (params !== null) routeParams = Object.assign(params, routeParams);
+
+      return this.localePath({
+        name: urlName,
+        params: routeParams,
+        query: query,
+      });
     },
     view(name) {
       return () => import("~/components/" + name + ".vue");
@@ -221,7 +232,7 @@ Vue.mixin({
 
       return formattedPrice;
     },
-    notify(content, color, timeout = 50000) {
+    notify(content, color, timeout = 5000) {
       let icon =
         color == "success"
           ? "checkmark-circle"

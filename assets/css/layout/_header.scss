@@ -103,9 +103,12 @@ header {
         }
 
         ul {
+          max-height: 360px;
+          overflow-y: auto;
+
           li {
             display: flex;
-            padding: $padding-sm 0;
+            padding: $padding-sm $padding-xs;
 
             img {
               margin-right: $padding-xs;
@@ -125,16 +128,14 @@ header {
               }
             }
 
-            &:first-child {
-              padding-top: 0;
-            }
-
             &:not(:first-child){
               border-top: 1px solid $border-color;
             }
 
             &.cart-actions {
-              padding-bottom: 0;
+              position: sticky;
+              bottom: 0px;
+              background: rgba($bg-cream, 0.6);
             }
           }
         }

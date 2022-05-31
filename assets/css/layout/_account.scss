@@ -23,13 +23,16 @@ main.account {
       }
 
       ul {
-        padding: $padding-xs;
-        padding-left: 0;
+        padding: $padding-xs $padding-xs $padding-xs 0;
 
         li {
-          border-bottom-right-radius: 32px;
-          border-top-right-radius: 32px;
+          border-bottom-right-radius: $border-radius;
+          border-top-right-radius: $border-radius;
+          border: 1px solid $border-color-light;
+          border-left: 0;
+          margin: $padding-xs 0;
           font-size: 14px;
+          transition: all 0.2s ease-in;
 
           a {
             display: flex;
@@ -48,13 +51,12 @@ main.account {
             }
           }
 
-          &:hover {
+          &:hover,
+          &.active {
             background: rgba($grey-lighter, 0.2);
           }
 
           &.active {
-            background: $grey-lighter;
-
             a {
               color: $grey-dark;
             }
@@ -63,8 +65,7 @@ main.account {
       }
     }
 
-    .content {
-      border-left: 1px solid $grey-lighter;
+    > .content {
       flex: 1;
 
       > .title {
@@ -75,26 +76,27 @@ main.account {
         border-bottom: 1px solid $grey-lighter;
         padding: 4px 16px;
       }
+
+      > :nth-child(2) {
+        border-left: 1px solid $grey-lighter;
+      }
     }
   }
 }
 
 @media (max-width: $breakpoint-sm) {
   main.account {
-    > nav {
+    .box > nav {
       width: 50px;
 
       .header {
+        width: max-content;
         height: 54px;
         padding: 2px 5px;
-
-        span {
-          display: none;
-        }
       }
 
       ul {
-        padding: 5px 2px 5px 0;
+        padding: 0;
 
         li {
           padding-left: 5px;
@@ -110,9 +112,13 @@ main.account {
       }
     }
 
-    .content {
+    .box > .content {
       > .title {
         height: 54px;
+      }
+
+      > :nth-child(2) {
+        border-left: 0px;
       }
     }
   }

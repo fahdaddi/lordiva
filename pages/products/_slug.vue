@@ -1,9 +1,10 @@
 <template>
-  <section class="product-page">
+  <section v-if="product" :key="product.slug" class="product-page">
     <div class="product container fw">
       <div class="imgs-container">
         <div class="main-image">
           <c-img
+            :key="image"
             :src="image"
             :alt="`${product.name}`"
             type="product"
@@ -13,10 +14,9 @@
 
         <ul class="views no-wrap">
           <li
-            v-for="(view, i) in product.views"
+            v-for="(view, i) in views"
             :key="i"
             v-bind:class="{ active: i == viewIndex }"
-            @mouseover="selectImage(view, i)"
             @click="selectImage(view, i)"
           >
             <c-img
@@ -39,22 +39,77 @@
         >
 
         <div class="price-rating">
-          <div v-if="product.discount_price" class="price">
-            <span class="strike old">{{ price(product.price) }}</span>
-            <span class="selling">{{ price(product.discount_price) }}</span>
+          <div
+            v-if="selectedSize.discount_price || product.discount_price"
+            class="price"
+          >
+            <span class="strike old">{{
+              price(selectedSize.price || product.price)
+            }}</span>
+            <span class="selling">{{
+              price(selectedSize.discount_price || product.discount_price)
+            }}</span>
           </div>
           <div v-else class="price">
-            <span class="selling">{{ price(product.price) }}</span>
+            <span class="selling">{{
+              price(selectedSize.price || product.price)
+            }}</span>
           </div>
 
-          <div v-if="product.rating" class="rating">
+          <div v-if="product.rating" class="rating mb-6">
             <Rating :rating="product.rating.value" />
           </div>
         </div>
 
-        <p class="description">{{ product.meta_description }}</p>
+        <div v-if="selectedSize.id" class="size">
+          <span class="mr-2">
+            {{ selectedSize.name }}
+          </span>
+          <Tag
+            :color="selectedSize.stock > 0 ? 'success' : 'warning'"
+            outlined
+            small
+            rounded
+            >{{ $t(selectedSize.stock > 0 ? "in_stock" : "sold_out") }}</Tag
+          >
+        </div>
 
-        <div class="atc">
+        <div v-else class="size">
+          <Tag
+            :color="product.stock > 0 ? 'success' : 'warning'"
+            outlined
+            small
+            rounded
+            >{{ $t(product.stock > 0 ? "in_stock" : "sold_out") }}</Tag
+          >
+        </div>
+
+        <ul class="views no-wrap">
+          <li
+            v-for="size in product.sizes"
+            :key="`${size.id}`"
+            :class="{
+              active: size.id == selectedSize.id,
+              soldout: size.stock == 0,
+            }"
+            @click="selectSize(size)"
+          >
+            <c-img
+              v-if="size.image"
+              class="logo"
+              :src="size.image"
+              type="logo"
+              size="main"
+              :alt="size.name"
+            />
+
+            <template v-else>
+              {{ size.name }}
+            </template>
+          </li>
+        </ul>
+
+        <div class="qty">
           <div class="qty-selector">
             <c-svg name="minus" @click="qtyLess()" />
             <input
@@ -69,31 +124,55 @@
             <c-svg name="plus" @click="qtyMore()" />
           </div>
           <o-button
-            variant="success"
+            :variant="
+              (selectedSize.id ? selectedSize.stock : product.stock) > 0
+                ? 'success'
+                : 'warning'
+            "
             :loading="add_to_cart_loading"
             :disabled="add_to_cart_loading"
             expanded
             @click="addToCart"
           >
-            <c-svg name="shopping-cart" class="baseline mr-1" />
-            {{ $t("add_to_cart") }}
+            <c-svg
+              :name="
+                (selectedSize.id ? selectedSize.stock : product.stock) > 0
+                  ? 'shopping-cart'
+                  : 'mail'
+              "
+              class="baseline mr-1"
+            />
+            {{
+              $t(
+                (selectedSize.id ? selectedSize.stock : product.stock) > 0
+                  ? "add_to_cart"
+                  : "notify_me"
+              )
+            }}
           </o-button>
         </div>
+
+        <p class="description">{{ product.meta_description }}</p>
       </div>
     </div>
 
-    <ul class="products container fw my-2">
+    <ul class="products container fw mt-2">
       <div class="title">
         <span>{{ $t("related_products") }}</span>
       </div>
       <ul class="no-wrap">
-        <ProductCard v-for="i in related" :key="i" />
+        <ProductCard
+          v-for="related in product.related"
+          :key="related.id"
+          :product="related"
+        />
       </ul>
     </ul>
   </section>
 </template>
 
 <script>
+import Tag from "~/components/common/Tag.vue";
 const Rating = () => import("~/components/modules/product/Rating.vue");
 const ProductCard = () => import("~/components/modules/product/Card");
 
@@ -101,6 +180,7 @@ export default {
   components: {
     Rating,
     ProductCard,
+    Tag,
   },
   async asyncData({ app, store, route, params, query, error }) {
     return app.$axios
@@ -116,14 +196,6 @@ export default {
         ];
 
         let product = data;
-
-        let image;
-        if (product.views) {
-          product.views &&
-            product.image &&
-            product.views.unshift(product.image);
-          image = product.views.map((img) => img);
-        }
 
         let product_rich_snippets = {
           "@context": "http://schema.org/",
@@ -162,9 +234,6 @@ export default {
             ratingCount: product.rating.count,
           };
 
-        if (product.views && product.views.length > 0)
-          product_rich_snippets.image = image;
-
         return {
           rich_snippets: [
             app.router.app.$config("global_rich_snippets"),
@@ -172,8 +241,7 @@ export default {
           ],
           meta: meta,
           product: product,
-          related: data.related,
-          permalink: params.slug,
+          image: product.image,
           //   ipr: query.ipr,
         };
       })
@@ -182,13 +250,31 @@ export default {
   data() {
     return {
       add_to_cart_loading: false,
-      image: null,
+      views: [],
       viewIndex: 0,
+      selectedSize: {},
       qty: 1,
     };
   },
+  watch: {
+    "$route.params.slug"() {
+      let selectedSize = this.product.sizes.find((s) => s.stock > 0);
+      if (selectedSize) {
+        this.selectSize(selectedSize);
+      }
+    },
+  },
+  beforeDestroy() {
+    this.product = undefined;
+    this.image = undefined;
+    this.rich_snippets = undefined;
+    this.meta = undefined;
+  },
   created() {
-    this.image = this.product.image;
+    let selectedSize = this.product.sizes.find((s) => s.stock > 0);
+    if (selectedSize) {
+      this.selectSize(selectedSize);
+    }
   },
   methods: {
     qtyMore() {
@@ -210,11 +296,19 @@ export default {
       if (!this.$store.state.me) {
         return this.$root.openDrawer("signin");
       }
+
+      if (this.isSoldout()) {
+        return this.$root.openDrawer("notify_me", {
+          productId: this.product.id,
+          sizeId: this.selectedSize.id,
+        });
+      }
       this.add_to_cart_loading = true;
 
       this.$axios
         .post(`carts/${this.$store.state.cart.id}`, {
           slug: this.product.slug,
+          size_id: this.selectedSize.id,
           qty: this.qty,
         })
         .then((res) => {
@@ -226,9 +320,24 @@ export default {
         .catch((e) => this.$root.clientError(e))
         .finally(() => (this.add_to_cart_loading = false));
     },
+    isSoldout() {
+      return this.selectedSize.id
+        ? this.selectedSize.stock == 0
+        : this.product.stock == 0;
+    },
     selectImage(src, index) {
       this.image = src;
       this.viewIndex = index;
+    },
+    selectSize(size) {
+      this.selectedSize = { ...size };
+
+      let views = size.views ? [...size.views] : [];
+      if (size.image) views.unshift(size.image);
+      this.image = views[0];
+      this.views = views;
+
+      this.viewIndex = 0;
     },
   },
 };

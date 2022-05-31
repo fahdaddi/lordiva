@@ -37,7 +37,7 @@
             :alt="$t('logo') + ' ' + $config('site')"
             type="logo"
             size="150x150"
-            @click="pushUrl(`/`)"
+            @click="pushUrl('index')"
           />
         </div>
 
@@ -58,13 +58,13 @@
       </div>
     </div>
 
-    <ul class="products container">
+    <ul class="products container pt-0">
       <div class="title">
-        <span>{{ $t("top_products") }}</span>
+        <span>{{ $t("latest_products") }}</span>
       </div>
       <ul class="no-wrap">
         <ProductCard
-          v-for="product in home.best_products"
+          v-for="(product, i) in home.last_products"
           :key="product.id"
           :product="product"
         />
@@ -85,13 +85,13 @@
       </div>
     </div>
 
-    <ul class="products container">
+    <ul class="products container pb-0">
       <div class="title">
-        <span>{{ $t("latest_products") }}</span>
+        <span>{{ $t("top_products") }}</span>
       </div>
       <ul class="no-wrap">
         <ProductCard
-          v-for="(product, i) in home.last_products"
+          v-for="product in home.best_products"
           :key="product.id"
           :product="product"
         />

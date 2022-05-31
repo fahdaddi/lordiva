@@ -26,11 +26,11 @@
               {{ $t("my_account") }}
             </nuxt-link>
           </li>
-          <li>
+          <!-- <li>
             <nuxt-link to="/account/orders">
               {{ $t("my_orders") }}
             </nuxt-link>
-          </li>
+          </li> -->
           <li>
             <nuxt-link to="/account/addresses">
               {{ $t("my_address_book") }}

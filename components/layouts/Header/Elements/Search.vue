@@ -23,7 +23,7 @@
             v-for="suggestion in suggestions"
             :key="suggestion"
             class="tag"
-            @click="pushUrl('/search/' + suggestion)"
+            @click="pushUrl('search', { q: suggestion })"
           >
             <span v-html="highlight(suggestion)"></span>
           </li>
@@ -41,7 +41,7 @@
             v-for="history in suggesthistory"
             :key="history"
             class="tag"
-            @click="pushUrl('/search/' + history)"
+            @click="pushUrl('search', { q: history })"
           >
             <span v-html="highlight(history)"></span>
           </li>
@@ -106,7 +106,8 @@ export default {
           "suggesthistory",
           JSON.stringify(this.suggesthistory)
         );
-        this.pushUrl("/search/" + this.search_query);
+
+        this.pushUrl("search", { q: this.search_query });
       }
     },
   },

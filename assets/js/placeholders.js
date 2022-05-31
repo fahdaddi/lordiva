@@ -1,7 +1,8 @@
 export default {
   address: {
-    fname: "ex: Fahd",
-    lname: "ex: ADDI",
+    full_name: "ex: Jack Sparow",
+    fname: "ex: Jack",
+    lname: "ex: Sparow",
     address_1: "ex: 25 App. les oliviers",
     address_2: "ex: Qt. al adarissa",
     zip: "ex: 23000",

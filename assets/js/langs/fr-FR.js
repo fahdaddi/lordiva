@@ -67,6 +67,7 @@ export default () => {
       follow_us: "Suivez-nous",
       forgotten: "Oublié ?",
       free_shipping: "Livraison gratuite",
+      full_name: "Nom complet",
       starting_at: "À partir de",
       history: "Historique",
       homepage: "Accueil",
