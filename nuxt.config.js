@@ -12,9 +12,15 @@ export default {
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: "%s - Habous Art & Co.",
+    titleTemplate: process.env.APP_NAME
+      ? "%s - " + process.env.APP_NAME
+      : "%s - Habous Art & Co.",
     meta: [
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
+      },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },

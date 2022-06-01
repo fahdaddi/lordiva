@@ -206,6 +206,7 @@ export default {
           "@type": "Product",
           name: product.name,
           description: product.meta_description,
+          image: product.image,
           // first split .
 
           sku: product.id,
