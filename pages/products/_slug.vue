@@ -152,7 +152,11 @@
           </o-button>
         </div>
 
-        <p class="description">{{ product.meta_description }}</p>
+        <div
+          v-if="product.meta_description"
+          class="description"
+          v-html="product.meta_description"
+        />
       </div>
     </div>
 
