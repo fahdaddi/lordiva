@@ -7,8 +7,8 @@ Vue.mixin({
     return {
       placeholders,
 
-      blank_img: require("/assets/images/blank.png"),
-      default_logo: require("/assets/images/logo.png"),
+      blank_img: require("/static/blank.png"),
+      default_logo: require("/static/android-chrome-192x192.png"),
       default_avatar: require("/assets/images/avatar.png"),
 
       // images types & sizes

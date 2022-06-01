@@ -19,6 +19,10 @@ export default [
       payment: ["visa", "mastercard", "paypal", "livraison"],
       carriers: ["amana", "biker"],
     },
+    socials: {
+      instagram: "https://www.instagram.com/habous_art",
+      facebook: "https://web.facebook.com/habous.art",
+    },
     usp: { shipped_items: "250", satisfied_customers: "150" },
   },
 ];

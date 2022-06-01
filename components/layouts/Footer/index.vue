@@ -15,8 +15,21 @@
         </div>
 
         <div class="right">
-          <a href="javascript:;"><c-svg class="baseline">facebook</c-svg></a>
-          <a href="javascript:;"><c-svg class="baseline">instagram</c-svg></a>
+          <a
+            :href="$config('socials').facebook"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener"
+            ><c-svg class="baseline">facebook</c-svg></a
+          >
+          <a
+            :href="$config('socials').instagram"
+            name="instagram"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener"
+            ><c-svg class="baseline">instagram</c-svg></a
+          >
           <!-- <c-svg class="baseline"></c-svg> -->
         </div>
       </section>

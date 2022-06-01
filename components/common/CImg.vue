@@ -1,12 +1,12 @@
 <template>
   <!-- TODO: o-skeleton in loading -->
-  <div v-if="!intersected && lazy && !blank" v-bind:class="cls">
+  <div v-if="!intersected && !lazy && !blank" v-bind:class="cls">
     <o-skeleton :width="width" :height="height" position="centered" />
   </div>
 
   <img
     v-else
-    :src="intersected ? srcImage : blankSrc"
+    :src="intersected || !lazy ? srcImage : blankSrc"
     v-bind:class="cls"
     :width="width"
     :height="height"
@@ -28,7 +28,7 @@ export default {
     },
     blankSrc: {
       type: String,
-      default: require("/assets/images/blank.png"),
+      default: require("/static/blank.png"),
     },
     size: {
       type: String,

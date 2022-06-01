@@ -103,7 +103,7 @@ export default {
   methods: {},
   head() {
     let path = this.$route.path === "/" ? "" : this.$route.path;
-    let canonical = `${this.$config("url")}${path}`;
+    let canonical = `${this.$store.state.url}${path}`;
 
     let link = [{ rel: "canonical", href: canonical }];
     return {

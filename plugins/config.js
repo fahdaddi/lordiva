@@ -16,7 +16,7 @@ export default async ({ app, req }, inject) => {
       "@type": "Organization",
 
       url: url,
-      logo: url + require("/assets/images/logo.png"),
+      logo: url + require("/static/logo.png"),
       contactPoint: [
         {
           "@type": "ContactPoint",

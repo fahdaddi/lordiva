@@ -119,6 +119,8 @@ main.account {
 
       > :nth-child(2) {
         border-left: 0px;
+        overflow-y: auto;
+        max-height: calc(100% - 60px);
       }
     }
   }

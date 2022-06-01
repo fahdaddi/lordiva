@@ -4,7 +4,7 @@
       :autoplay="4000"
       loop
       :navigation-arrows="$device.isDesktop"
-      :navigation-dots="!$device.isDesktop"
+      :navigation-dots="false"
     >
       <KeenSlide v-for="(slide, i) in home.slides" :key="i">
         <div
@@ -19,7 +19,7 @@
             :key="i"
             :src="slide.image"
             :alt="slide.title"
-            :lazy="i != 1"
+            :lazy="i != 0"
             type="home"
             size="slider"
           />
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <ul class="products container pt-0">
+    <div class="products container pt-0">
       <div class="title">
         <span>{{ $t("latest_products") }}</span>
       </div>
@@ -69,7 +69,7 @@
           :product="product"
         />
       </ul>
-    </ul>
+    </div>
 
     <div class="usp">
       <div class="container">
@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <ul class="products container pb-0">
+    <div class="products container pb-0">
       <div class="title">
         <span>{{ $t("top_products") }}</span>
       </div>
@@ -96,7 +96,7 @@
           :product="product"
         />
       </ul>
-    </ul>
+    </div>
   </section>
 </template>
 

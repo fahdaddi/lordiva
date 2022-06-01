@@ -18,8 +18,7 @@ export default {
     meta: [
       {
         name: "viewport",
-        content:
-          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
+        content: "width=device-width, initial-scale=1",
       },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
@@ -137,13 +136,12 @@ export default {
       "@nuxtjs/pwa",
       {
         icon: {
-          iconFileName: "logo.png",
+          iconFileName: "icon.png",
         },
         manifest: {
           name: "Habous Art & Co",
           lang: "fr",
-          short_name: "Habous-art-co",
-          start_url: "/",
+          start_url: "/?standalone=true", //?standalone=true for precaching assets for later use when offline
           display: "standalone",
           background_color: "#f8f8f8",
           theme_color: "#f8f8f8",
@@ -173,8 +171,8 @@ export default {
   },
   purgeCSS: {
     mode: "postcss",
-    whitelistPatterns: [/^o-.*/],
-    whitelistPatternsChildren: [/^o-.*/],
+    whitelistPatterns: [/^((o|tag|kr|animate)-|icon|show|dot|column).*/],
+    whitelistPatternsChildren: [/^((o|tag|kr)-|icon|show|column).*/],
     content: [
       "components/**/*.vue",
       "layouts/**/*.vue",
@@ -191,6 +189,9 @@ export default {
   render: {
     asyncScripts: true,
     // resourceHints: false,
+    static: {
+      maxAge: 60 * 60 * 24 * 365 * 1000,
+    },
   },
   // This feature is inspired by vue-cli modern mode: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-modern
   modern: isProd ? "server" : false,

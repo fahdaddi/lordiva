@@ -2,10 +2,11 @@
   .navigation-wrapper {
     background: $bg-cream;
   }
+
   .usp {
-    background: $bg-cream;
-    border-bottom: 1px solid $border-color-light;
-    border-top: 1px solid $border-color-light;
+    color: $grey-darker;
+    border: solid $border-color-light;
+    border-width: 1px 0px;
 
     ul.items {
       display: flex;
@@ -18,7 +19,6 @@
         align-items: center;
         justify-content: center;
         font-size: 10px;
-        font-weight: lighter;
         color: $grey;
         padding: $padding-xs;
 
@@ -49,7 +49,7 @@
 
       .text {
         flex-grow: 1;
-        color: $grey;
+        color: $grey-darker;
         background: $bg-cream;
         padding: $padding-xs;
         font-weight: lighter;

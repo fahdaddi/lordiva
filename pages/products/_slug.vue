@@ -160,7 +160,7 @@
       </div>
     </div>
 
-    <ul class="products container fw mt-2">
+    <div class="products container fw mt-2">
       <div class="title">
         <span>{{ $t("related_products") }}</span>
       </div>
@@ -171,7 +171,7 @@
           :product="related"
         />
       </ul>
-    </ul>
+    </div>
   </section>
 </template>
 
@@ -186,7 +186,7 @@ export default {
     ProductCard,
     Tag,
   },
-  async asyncData({ app, store, route, params, query, error }) {
+  async asyncData({ app, store, route, params, query, error, req }) {
     return app.$axios
       .get("products/" + params.slug, { params: query })
       .then(({ data }) => {
@@ -215,7 +215,7 @@ export default {
             "@type": "AggregateOffer",
             acceptedPaymentMethod: "http://purl.org/goodrelations/v1#Cash",
             price: product.price,
-            url: app.router.app.$config("url") + route.path,
+            url: store.state.url + route.path,
             priceCurrency: app.router.app.$config("currency_code"),
             itemCondition: "https://schema.org/NewCondition",
             availability: product.stock

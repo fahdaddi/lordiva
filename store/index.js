@@ -3,6 +3,7 @@
 export const strict = false;
 
 export const state = () => ({
+  url: null,
   meta_title: "",
   me: null,
   token: null,
@@ -17,6 +18,9 @@ export const state = () => ({
 export const getters = {};
 
 export const mutations = {
+  SET_URL(state, url) {
+    state.url = url;
+  },
   UPDATE_META_TITLE(state, data) {
     state.meta_title = data;
   },
@@ -45,23 +49,25 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit }, { req, app }) {
+    commit("SET_URL", req.headers.host);
     const cookie = req.headers.cookie ? req.headers.cookie.split(";") : null;
-    for (let i = 0; i < cookie.length; ++i) {
-      if (cookie[i].trim().match("^token=")) {
-        commit("SET_AUTH_TOKEN", cookie[i].replace(`token=`, "").trim());
-        app.$axios
-          .get("me")
-          .then((res) => {
-            commit("SET_ME", res.data.user);
-            commit("UPDATE_CART_COUNT", res.data.cart.count);
-            commit("UPDATE_CART_TOTAL", res.data.cart.total);
-            commit("UPDATE_CART_ID", res.data.cart.id);
-            commit("UPDATE_CART", res.data.cart.cart_items);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+    if (cookie)
+      for (let i = 0; i < cookie.length; ++i) {
+        if (cookie[i].trim().match("^token=")) {
+          commit("SET_AUTH_TOKEN", cookie[i].replace(`token=`, "").trim());
+          app.$axios
+            .get("me")
+            .then((res) => {
+              commit("SET_ME", res.data.user);
+              commit("UPDATE_CART_COUNT", res.data.cart.count);
+              commit("UPDATE_CART_TOTAL", res.data.cart.total);
+              commit("UPDATE_CART_ID", res.data.cart.id);
+              commit("UPDATE_CART", res.data.cart.cart_items);
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        }
       }
-    }
   },
 };

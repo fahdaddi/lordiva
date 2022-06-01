@@ -1,11 +1,11 @@
 footer {
   background: $bg-cream;
-  color: rgba($grey-dark, 0.7) !important;
+  color: $grey-darker !important;
   border-top: 3px solid $border-color;
   font-size: 13px;
 
   a {
-    color: rgba($grey-dark, 0.7) !important;
+    color: $grey-darker !important;
     margin-bottom: $padding-xs / 4;
     display: inline-flex;
 
@@ -25,7 +25,6 @@ footer {
       flex-shrink: 0;
 
       a {
-        color: rgba($grey-dark, 0.7);
         margin-left: $padding-xs / 2;
         font-size: 24px;
 
