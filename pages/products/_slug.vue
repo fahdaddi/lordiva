@@ -344,6 +344,18 @@ export default {
       this.viewIndex = 0;
     },
   },
+  head() {
+    let scripts = [
+      {
+        type: "application/ld+json",
+        json: this.rich_snippets,
+      },
+    ];
+    return {
+      meta: this.meta,
+      script: scripts,
+    };
+  },
 };
 </script>
 
